@@ -10,8 +10,8 @@ import {
 } from '@hugeicons/core-free-icons';
 
 const socials = [
-  { icon: FacebookIcon, label: 'Facebook', href: '#' },
-  { icon: InstagramIcon, label: 'Instagram', href: '#' },
+  { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/p/Native-Academy-61578914925330/' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/reel/DNvaD4wYkUf/' },
   { icon: TwitterIcon, label: 'Twitter', href: '#' },
   { icon: YoutubeIcon, label: 'YouTube', href: '#' },
 ];
@@ -57,17 +57,43 @@ export default function Footer() {
             </div>
 
             {[
-              { title: 'Programs', links: ['Yorùbá Classes', 'Age 3–6 Track', 'Age 7–12 Track', 'Teen & Young Adult', 'Free Trial'] },
-              { title: 'Company', links: ['About Us', 'Our Tutors', 'Blog', 'Careers', 'Contact'] },
-              { title: 'Support', links: ['Help Center', 'Privacy Policy', 'Terms of Service', 'Parent Guide'] },
+              {
+                title: 'Programs',
+                links: [
+                  { label: 'Yorùbá Classes', href: '/services#yoruba-academy' },
+                  { label: 'Age 3–6 Track', href: '/services#yoruba-academy' },
+                  { label: 'Age 7–12 Track', href: '/services#yoruba-academy' },
+                  { label: 'Teen & Young Adult', href: '/services#yoruba-academy' },
+                  { label: 'Free Trial', href: '/services#yoruba-academy' },
+                ],
+              },
+              {
+                title: 'Company',
+                links: [
+                  { label: 'About Us', href: '/about-us' },
+                  { label: 'Our Tutors', href: '#' },
+                  { label: 'Blog', href: '#' },
+                  { label: 'Careers', href: '#' },
+                  { label: 'Contact', href: '/contact' },
+                ],
+              },
+              {
+                title: 'Support',
+                links: [
+                  { label: 'Help Center', href: '#' },
+                  { label: 'Privacy Policy', href: '#' },
+                  { label: 'Terms of Service', href: '#' },
+                  { label: 'Parent Guide', href: '#' },
+                ],
+              },
             ].map((col) => (
               <div key={col.title} className="flex flex-col gap-2">
                 <h3 className="font-heading text-[13px] text-gray-400 uppercase tracking-[0.06em] mb-1">
                   {col.title}
                 </h3>
                 {col.links.map((link) => (
-                  <a key={link} href="#" className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] no-underline">
-                    {link}
+                  <a key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] no-underline">
+                    {link.label}
                   </a>
                 ))}
               </div>

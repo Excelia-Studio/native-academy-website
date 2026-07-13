@@ -94,7 +94,7 @@ export default function Services() {
           >
             <div className="overflow-hidden rounded-[16px] shadow-lg shadow-black/5 group">
               <Image
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&h=600&fit=crop"
+                src="/images/class.webp"
                 alt="Young student learning on laptop"
                 width={480}
                 height={320}

@@ -106,7 +106,7 @@ export default function WhyTrust() {
           >
             <div className="overflow-hidden rounded-[20px] shadow-lg shadow-black/5 group border border-gray-100">
               <Image
-                src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&h=540&fit=crop"
+                src="/images/parent.webp"
                 alt="Mother helping child learn online"
                 width={500}
                 height={330}

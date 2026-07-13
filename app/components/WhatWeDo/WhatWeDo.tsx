@@ -108,7 +108,7 @@ export default function WhatWeDo() {
         >
           <div className="overflow-hidden rounded-[24px] shadow-lg shadow-black/5 group">
             <Image
-              src="/images/dos.webp"
+              src="/images/solution.webp"
               alt="Children learning together"
               width={800}
               height={800}

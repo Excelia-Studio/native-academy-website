@@ -80,7 +80,7 @@ export default function Hero() {
           >
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
-                <a href="#" id="hero-cta-primary">
+                <a href="/contact" id="hero-cta-primary">
                   Save your child&apos;s spot
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
@@ -123,7 +123,7 @@ export default function Hero() {
         >
           <div className="overflow-hidden rounded-[24px] shadow-xl shadow-green-900/5 group">
             <Image
-              src="/images/hero-image.webp"
+              src="/images/hero.webp"
               alt="Smiling young African girl"
               width={800}
               height={800}

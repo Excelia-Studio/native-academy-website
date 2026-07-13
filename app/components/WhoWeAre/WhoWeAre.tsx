@@ -109,7 +109,7 @@ export default function WhoWeAre() {
           >
             <div className="relative overflow-hidden rounded-[20px] border border-white/10 group shadow-2xl shadow-green-950/40">
               <Image
-                src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&h=500&fit=crop"
+                src="/images/about-us.webp"
                 alt="Children engaging in cultural learning"
                 width={520}
                 height={340}
