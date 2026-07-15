@@ -69,7 +69,7 @@ export default function AboutHero() {
               Native Academy was born from a simple, profound idea: creating a dedicated space for studying the first language. We recognise that identity begins with speech.
             </p>
             <p className="text-[15px] sm:text-base md:text-[17px] leading-[1.7]">
-              For families living globally, preserving that linguistic thread requires more than app exercises—it requires a living, breathing community.
+              For families living globally, preserving that linguistic thread requires more than app exercises, it requires a living, breathing community.
             </p>
           </motion.div>
 

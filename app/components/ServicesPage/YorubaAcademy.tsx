@@ -151,11 +151,10 @@ export default function YorubaAcademy() {
               <button
                 key={t.id}
                 onClick={() => setActiveTab(t.id)}
-                className={`flex-1 min-w-[120px] py-3.5 px-4 font-heading text-xs font-semibold rounded-xl border-none cursor-pointer transition-all duration-300 ${
-                  activeTab === t.id
-                    ? 'bg-white text-gray-900 shadow-md shadow-black/5 scale-[1.02]'
-                    : 'text-gray-500 hover:text-gray-900'
-                }`}
+                className={`flex-1 min-w-[120px] py-3.5 px-4 font-heading text-xs font-semibold rounded-xl border-none cursor-pointer transition-all duration-300 ${activeTab === t.id
+                  ? 'bg-white text-gray-900 shadow-md shadow-black/5 scale-[1.02]'
+                  : 'text-gray-500 hover:text-gray-900'
+                  }`}
               >
                 {t.title}
               </button>
@@ -213,9 +212,8 @@ export default function YorubaAcademy() {
                   </div>
                 </div>
                 <div className="h-1 bg-gray-100 rounded-full overflow-hidden my-1">
-                  <div className={`h-full rounded-full ${
-                    activeTrack.accentColor === 'green' ? 'bg-green-600' : activeTrack.accentColor === 'amber' ? 'bg-amber-500' : 'bg-gray-800'
-                  }`} style={{ width: '40%' }} />
+                  <div className={`h-full rounded-full ${activeTrack.accentColor === 'green' ? 'bg-green-600' : activeTrack.accentColor === 'amber' ? 'bg-amber-500' : 'bg-gray-800'
+                    }`} style={{ width: '40%' }} />
                 </div>
                 <div className="text-[11px] text-gray-500 leading-relaxed italic bg-gray-50 p-3 rounded-lg border border-gray-100">
                   &ldquo;Ìkíni: We start with proper greetings to adults. In Yoruba culture, respect is woven directly into how we say hello.&rdquo;
@@ -293,21 +291,21 @@ export default function YorubaAcademy() {
             Our cohorts start on the 1st of every month. Classes are capped at 6 students to guarantee individual conversational feedback from our native-speaking tutors.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full mt-4">
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} className="w-full sm:w-auto">
               <Button asChild size="lg" className="w-full sm:w-auto px-8 bg-green-600 hover:bg-green-700 text-white font-medium rounded-full py-3.5 h-auto transition-all shadow-md shadow-green-900/10">
-                <a href="/contact" id="yoruba-cta-enroll">
-                  Enroll in Yoruba Academy
+                <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="yoruba-cta-enroll" target='_blank' rel='noopener noreferrer'>
+                  Enroll in yoruba academy
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
               </Button>
             </motion.div>
-            <span className="text-[12px] sm:text-xs text-gray-500 font-medium italic">
+            {/* <span className="text-[12px] sm:text-xs text-gray-500 font-medium italic">
               * Includes a 7-day money-back guarantee
-            </span>
+            </span> */}
           </div>
 
-          <div className="flex gap-6 mt-8 pt-8 border-t border-white/5 w-full justify-center text-left max-w-md flex-wrap sm:flex-nowrap">
+          {/* <div className="flex gap-6 mt-8 pt-8 border-t border-white/5 w-full justify-center text-left max-w-md flex-wrap sm:flex-nowrap">
             <div>
               <div className="text-[11px] text-gray-500 uppercase tracking-wider mb-1">Current Availability</div>
               <div className="text-xs font-semibold text-amber-400">Ìràwọ̀ (3–6): 2 spots left</div>
@@ -317,7 +315,7 @@ export default function YorubaAcademy() {
               <div className="text-[11px] text-gray-500 uppercase tracking-wider mb-1">Cohort Start</div>
               <div className="text-xs font-semibold text-green-400">Starts August 1, 2026</div>
             </div>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>

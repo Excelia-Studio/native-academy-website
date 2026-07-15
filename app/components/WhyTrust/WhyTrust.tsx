@@ -123,17 +123,6 @@ export default function WhyTrust() {
               <span>4.9/5 Parent Rating</span>
             </motion.div>
           </motion.div>
-
-          <motion.div variants={itemVariants} className="pt-2">
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-              <Button asChild variant="outline" size="lg" className="w-auto px-7 py-3.5 h-auto border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full shadow-none transition-all">
-                <a href="#" id="whytrust-cta">
-                  Learn more
-                  <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-                </a>
-              </Button>
-            </motion.div>
-          </motion.div>
         </div>
 
         {/* Right Side: Stack of 3 Cards */}

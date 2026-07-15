@@ -46,6 +46,7 @@ const foundations = [
     colorClass: 'text-green-600 bg-green-50 border-green-150',
     hoverBg: 'hover:bg-green-50/40 hover:border-green-300',
     iconColor: 'text-green-600 bg-green-50 border-green-100',
+    border: "border-green-100",
   },
   {
     badge: 'Our Vision',
@@ -55,15 +56,17 @@ const foundations = [
     colorClass: 'text-amber-600 bg-amber-50 border-amber-150',
     hoverBg: 'hover:bg-amber-50/40 hover:border-amber-300',
     iconColor: 'text-amber-600 bg-amber-50 border-amber-100',
+    border: "border-amber-100"
   },
   {
     badge: 'Our Core Value',
     icon: Shield01Icon,
     title: 'Heritage Preservation',
     desc: "Direct preservation of African languages' heritage by providing deep immersion and high-quality native education.",
-    colorClass: 'text-emerald-700 bg-emerald-50 border-emerald-150',
-    hoverBg: 'hover:bg-emerald-50/40 hover:border-emerald-300',
-    iconColor: 'text-emerald-700 bg-emerald-50 border-emerald-100',
+    colorClass: 'text-green-700 bg-green-50 border-green-150',
+    hoverBg: 'hover:bg-green-50/40 hover:border-green-300',
+    iconColor: 'text-green-600 bg-green-50 border-green-100',
+    border: 'border-green-100'
   },
 ];
 
@@ -114,15 +117,15 @@ export default function AboutFoundation() {
                   boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className={`p-8 rounded-[24px] bg-white border border-gray-150 transition-all duration-300 flex flex-col justify-between h-full group ${item.hoverBg}`}
+                className={`p-8 rounded-[24px] bg-white border border-gray-100 transition-all duration-300 flex flex-col justify-between h-full group ${item.hoverBg}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-8">
-                    <span className={`inline-flex items-center px-3 py-1 font-heading text-[11px] tracking-tight uppercase rounded-full border ${item.colorClass}`}>
+                    <span className={`inline-flex items-center px-3 py-1 font-heading text-[11px] tracking-tight uppercase rounded-full border ${item.border} ${item.colorClass}`}>
                       {item.badge}
                     </span>
                     <div className={`p-3 rounded-2xl border shrink-0 transition-transform duration-300 group-hover:scale-110 ${item.iconColor}`}>
-                      <HugeiconsIcon icon={IconComp} size={22} />
+                      <HugeiconsIcon icon={IconComp} size={20} />
                     </div>
                   </div>
                   <h3 className="font-heading text-lg sm:text-xl text-gray-950 mb-3 group-hover:text-green-800 transition-colors">

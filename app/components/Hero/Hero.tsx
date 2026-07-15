@@ -80,7 +80,7 @@ export default function Hero() {
           >
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
-                <a href="/contact" id="hero-cta-primary">
+                <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="hero-cta-primary" target="_blank" rel="noopener noreferrer">
                   Save your child&apos;s spot
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
@@ -88,7 +88,7 @@ export default function Hero() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-7 border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full h-auto py-3.5 transition-all">
-                <a href="#" id="hero-cta-secondary">
+                <a href="/media" id="hero-cta-secondary">
                   <HugeiconsIcon icon={PlayIcon} size={18} />
                   Watch free lesson
                 </a>

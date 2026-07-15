@@ -64,26 +64,22 @@ export default function Footer() {
                   { label: 'Age 3–6 Track', href: '/services#yoruba-academy' },
                   { label: 'Age 7–12 Track', href: '/services#yoruba-academy' },
                   { label: 'Teen & Young Adult', href: '/services#yoruba-academy' },
-                  { label: 'Free Trial', href: '/services#yoruba-academy' },
                 ],
               },
               {
                 title: 'Company',
                 links: [
                   { label: 'About Us', href: '/about-us' },
-                  { label: 'Our Tutors', href: '#' },
-                  { label: 'Blog', href: '#' },
-                  { label: 'Careers', href: '#' },
+                  { label: 'Services', href: '/services' },
+                  { label: 'Media', href: '/media' },
                   { label: 'Contact', href: '/contact' },
                 ],
               },
               {
                 title: 'Support',
                 links: [
-                  { label: 'Help Center', href: '#' },
-                  { label: 'Privacy Policy', href: '#' },
-                  { label: 'Terms of Service', href: '#' },
-                  { label: 'Parent Guide', href: '#' },
+                  { label: 'Privacy Policy', href: '/privacy-policy' },
+                  { label: 'Terms of Service', href: '/terms-of-service' },
                 ],
               },
             ].map((col) => (
@@ -102,7 +98,7 @@ export default function Footer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-between py-6 gap-1.5 text-center">
             <p className="text-[13px] text-gray-600">© {new Date().getFullYear()} Native Academy. All rights reserved.</p>
-            <p className="text-[13px] text-gray-600">Made with 💚 for the African diaspora</p>
+            <p className="text-[13px] text-gray-600">Native Academy for the African diaspora</p>
           </div>
         </div>
       </div>

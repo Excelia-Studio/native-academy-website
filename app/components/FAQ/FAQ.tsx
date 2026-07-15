@@ -19,6 +19,10 @@ const faqs = [
     q: 'My child speaks zero African languages right now. Can they join?',
     a: 'Absolutely. Our curriculum is specifically built to accommodate beginners, giving them a comfortable, low-pressure foundation to build confidence step-by-step.',
   },
+  {
+    q: 'Are there plans to introduce other languages?',
+    a: "Yes! While our live Yorùbá track is fully operational, our explicit vision is to build an inclusive online portal offering multiple native African languages for diaspora children globally",
+  },
 ];
 
 const containerVariants = {
@@ -50,7 +54,7 @@ export default function FAQ() {
   return (
     <section className="py-16 md:py-[100px] bg-gray-50 overflow-hidden" id="faq">
       <motion.div
-        className="max-w-2xl lg:max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-14 items-start"
+        className="max-w-2xl lg:max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 lg:gap-14"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -66,14 +70,6 @@ export default function FAQ() {
           <p className="text-sm sm:text-[15px] leading-[1.7] text-gray-500 mb-2">
             Everything you need to know about our programs.
           </p>
-          <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-            <Button asChild size="lg" className="w-auto px-7 py-3 h-auto bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full transition-all">
-              <a href="#" id="faq-cta">
-                View more
-                <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-              </a>
-            </Button>
-          </motion.div>
         </motion.div>
 
         <motion.div variants={itemVariants} className="flex flex-col gap-3 w-full">

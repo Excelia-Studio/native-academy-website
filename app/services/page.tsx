@@ -20,7 +20,7 @@ export default function ServicesPage() {
       <main className="overflow-hidden bg-white">
         <ServicesHero />
         <YorubaAcademy />
-        <LanguageWaitlist />
+        {/* <LanguageWaitlist /> */}
       </main>
       <Footer />
     </>

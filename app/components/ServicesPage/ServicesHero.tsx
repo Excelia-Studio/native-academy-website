@@ -86,18 +86,18 @@ export default function ServicesHero() {
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
                 <a href="#yoruba-academy" id="hero-btn-primary">
-                  Explore Yorùbá Academy
+                  Explore yorùbá academy
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
               </Button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
+            {/* <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-7 border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full h-auto py-3.5 transition-all">
                 <a href="#waitlist" id="hero-btn-secondary">
-                  Join Language Waitlist
+                  Join language waitlist
                 </a>
               </Button>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           <motion.div

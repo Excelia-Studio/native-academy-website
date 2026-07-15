@@ -131,17 +131,6 @@ export default function Testimonials() {
             );
           })}
         </motion.div>
-
-        <motion.div variants={itemVariants} className="text-center">
-          <motion.div className="inline-block" whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-            <Button asChild variant="outline" size="lg" className="w-auto px-7 py-3 h-auto border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full shadow-none transition-all">
-              <a href="#" id="testimonials-cta">
-                View more
-                <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-              </a>
-            </Button>
-          </motion.div>
-        </motion.div>
       </motion.div>
     </section>
   );

@@ -109,7 +109,7 @@ export default function FooterCTA() {
                     size="lg"
                     className="w-full py-4 h-auto bg-amber-500 hover:bg-amber-600 text-gray-950 font-medium rounded-full relative overflow-hidden group border-0"
                   >
-                    <a href="#booking" id="footer-cta-primary" className="flex items-center justify-center gap-2">
+                    <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" target='_blank' rel='noopener noreferrer' id="footer-cta-primary" className="flex items-center justify-center gap-2">
                       <span>Save your child&apos;s spot</span>
                       <HugeiconsIcon
                         icon={ArrowRight01Icon}
@@ -132,7 +132,7 @@ export default function FooterCTA() {
                     <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
                       <HugeiconsIcon icon={PlayIcon} size={14} className="ml-0.5 fill-emerald-400" />
                     </div>
-                    <span>Watch Free Demo Lesson</span>
+                    <span>Watch free demo lesson</span>
                   </Button>
                 </motion.div>
 

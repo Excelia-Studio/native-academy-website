@@ -41,12 +41,10 @@ const languageListVariants = {
 const languages = [
   { name: 'Yorùbá', status: 'active', region: 'West Africa' },
   { name: 'Igbo', status: 'coming-soon', region: 'West Africa' },
+  { name: 'Hausa', status: 'coming-soon', region: 'West Africa' },
   { name: 'Swahili', status: 'coming-soon', region: 'East Africa' },
   { name: 'Zulu', status: 'coming-soon', region: 'Southern Africa' },
   { name: 'Amharic', status: 'coming-soon', region: 'Horn of Africa' },
-  { name: 'Xhosa', status: 'coming-soon', region: 'Southern Africa' },
-  { name: 'Hausa', status: 'coming-soon', region: 'West Africa' },
-  { name: 'Shona', status: 'coming-soon', region: 'Southern Africa' },
 ];
 
 export default function AboutLookingForward() {
@@ -88,7 +86,7 @@ export default function AboutLookingForward() {
           <motion.div variants={itemVariants} className="pt-2">
             <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-auto px-7 py-3.5 h-auto bg-green-400 hover:bg-green-300 text-gray-950 font-medium rounded-full shadow-lg shadow-green-400/20 transition-all">
-                <a href="/#services" id="about-looking-forward-cta">
+                <a href="/services" id="about-looking-forward-cta">
                   View current classes
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
@@ -122,11 +120,10 @@ export default function AboutLookingForward() {
                     borderColor: isActive ? 'rgba(74, 222, 128, 0.3)' : 'rgba(255, 255, 255, 0.1)',
                   }}
                   transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                  className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-default ${
-                    isActive
-                      ? 'bg-green-950/20 border-green-500/20 text-white'
-                      : 'bg-white/[0.02] border-white/5 text-gray-300'
-                  }`}
+                  className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-default ${isActive
+                    ? 'bg-green-950/20 border-green-500/20 text-white'
+                    : 'bg-white/[0.02] border-white/5 text-gray-300'
+                    }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-2">
                     <span className="font-heading text-lg font-bold">{lang.name}</span>

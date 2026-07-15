@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '@/components/ui/button';
 
@@ -31,6 +32,7 @@ const menuItemVariants = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -49,7 +51,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[1000] py-3.5 transition-all duration-300 ease-out ${menuOpen || scrolled
-          ? 'bg-white border-b border-gray-100 py-2.5 shadow-xs'
+          ? 'bg-white border-b border-gray-100 py-2.5'
           : 'bg-transparent'
           }`}
       >
@@ -73,23 +75,29 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-1">
             {[
+              { label: 'Home', href: '/' },
               { label: 'About', href: '/about-us' },
               { label: 'Services', href: '/services' },
               { label: 'Media', href: '/media' },
-              { label: 'Testimonials', href: '/#testimonials' },
-              { label: 'FAQ', href: '/#faq' },
               { label: 'Contact', href: '/contact' },
-            ].map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                whileHover={{ y: -1 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className="font-heading font-medium text-sm text-gray-600 hover:text-green-600 hover:bg-green-50/50 px-3.5 py-1.5 rounded-full transition-colors no-underline"
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            ].map((link) => {
+              const active = pathname === link.href;
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  whileHover={{ y: -1 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                  className={`font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors no-underline ${
+                    active
+                      ? 'text-green-600 bg-green-50/50'
+                      : 'text-gray-600 hover:text-green-600 hover:bg-green-50/50'
+                  }`}
+                >
+                  {link.label}
+                </motion.a>
+              );
+            })}
           </div>
 
           <motion.div
@@ -103,7 +111,7 @@ export default function Navbar() {
               size="default"
               className="shrink-0 rounded-full bg-green-600 hover:bg-green-700 text-white font-medium shadow-none px-6 py-2.5 h-auto text-sm transition-all"
             >
-              <a href="/contact" id="nav-cta">Enroll Now</a>
+              <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="nav-cta" target='_blank' rel='noopener noreferrer'>Enroll Now</a>
             </Button>
           </motion.div>
 
@@ -146,18 +154,25 @@ export default function Navbar() {
                 { label: 'Media', href: '/media' },
                 { label: 'Testimonials', href: '/#testimonials' },
                 { label: 'FAQ', href: '/#faq' },
-              ].map((item) => (
-                <motion.a
-                  key={item.label}
-                  variants={menuItemVariants}
-                  href={item.href}
-                  className="font-heading font-semibold text-xl text-gray-900 py-3.5 border-b border-gray-100 hover:text-green-600 transition-colors no-underline flex items-center justify-between"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                  <span className="text-gray-300 text-sm font-normal">→</span>
-                </motion.a>
-              ))}
+              ].map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <motion.a
+                    key={item.label}
+                    variants={menuItemVariants}
+                    href={item.href}
+                    className={`font-heading font-semibold text-xl py-3.5 border-b border-gray-100 transition-colors no-underline flex items-center justify-between ${
+                      active
+                        ? 'text-green-600'
+                        : 'text-gray-900 hover:text-green-600'
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                    <span className={`text-sm font-normal transition-colors ${active ? 'text-green-600' : 'text-gray-300'}`}>→</span>
+                  </motion.a>
+                );
+              })}
               <motion.div variants={menuItemVariants} className="pt-4">
                 <Button
                   asChild
