@@ -1,615 +1,292 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
-  CheckmarkCircle02Icon,
-  ArrowRight01Icon,
   SparklesIcon,
-  UserIcon,
-  Mail01Icon,
-  WhatsappIcon,
   GlobeIcon,
-  ArrowRightIcon,
-  StarIcon,
+  ArrowRight01Icon,
 } from '@hugeicons/core-free-icons';
 
-interface FormData {
-  parentName: string;
-  parentEmail: string;
-  parentPhone: string;
-  relation: string;
-  studentName: string;
-  ageGroup: string;
-  languageLevel: string;
-  languageOfInterest: string;
-  goal: string;
-  message: string;
-}
-
-const initialFormData: FormData = {
-  parentName: '',
-  parentEmail: '',
-  parentPhone: '',
-  relation: 'Parent',
-  studentName: '',
-  ageGroup: '3-6',
-  languageLevel: 'Beginner',
-  languageOfInterest: 'yoruba',
-  goal: 'identity',
-  message: '',
-};
-
 export default function ContactForm() {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [inviteRef, setInviteRef] = useState('');
 
-  const updateField = (key: keyof FormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [key]: value }));
-  };
+  useEffect(() => {
+    // Generate a unique cohort registration reference code on client mount
+    const randomNum = Math.floor(10000 + Math.random() * 90000);
+    setInviteRef(`YA-${randomNum}`);
+  }, []);
 
-  const handleNext = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (step < 3) {
-      setStep(step + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (step > 1) {
-      setStep(step - 1);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Simulate backend submission
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 1500);
-  };
-
-  // Determine destination name based on language selection
-  const getDestinationName = (lang: string) => {
-    switch (lang) {
-      case 'yoruba':
-        return 'Yorùbáland (Nigeria)';
-      case 'igbo':
-        return 'Igboland (Nigeria)';
-      case 'swahili':
-        return 'East Africa (Swahili Track)';
-      case 'zulu':
-        return 'South Africa (Zulu Track)';
-      case 'twi':
-        return 'Ghana (Twi Track)';
-      case 'hausa':
-        return 'West Africa (Hausa Track)';
-      default:
-        return 'African Cultural Hub';
-    }
-  };
-
-  // Determine stamp status based on flagship vs waitlist
-  const isWaitlist = formData.languageOfInterest !== 'yoruba';
+  const googleFormUrl = "https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true";
 
   return (
-    <section className="py-12 md:py-16 bg-white overflow-hidden" id="contact-form-section">
+    <section className="py-12 md:py-20 bg-white overflow-hidden" id="contact-form-section">
       <div className="max-w-[1200px] mx-auto px-6">
         
-        {/* Main Grid: Form Left, Passport Preview Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-start">
+        {/* Main Grid: Onboarding Left, Invitation Pass Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-12 lg:gap-16 items-center">
           
-          {/* Left Side: Animated Form Card */}
-          <div className="w-full bg-gray-50 border border-gray-100 rounded-3xl p-6 sm:p-8 md:p-10 shadow-xs relative">
-            
-            {/* Stepper Progress Bar */}
-            <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-200/60">
-              <div className="flex items-center gap-2">
-                {[1, 2, 3].map((num) => (
-                  <button
-                    key={num}
-                    onClick={() => {
-                      if (!submitted && num < step) setStep(num);
-                    }}
-                    disabled={submitted || num > step}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center font-heading text-sm transition-all cursor-pointer ${
-                      step === num
-                        ? 'bg-green-600 text-white ring-4 ring-green-100 font-bold'
-                        : step > num
-                        ? 'bg-green-100 text-green-700 font-bold'
-                        : 'bg-white text-gray-400 border border-gray-200'
-                    }`}
-                  >
-                    {num}
-                  </button>
-                ))}
-              </div>
-              <span className="text-xs font-heading font-medium text-gray-400 uppercase tracking-widest">
-                {!submitted ? `Step ${step} of 3` : 'Submission Complete'}
+          {/* Left Side: Onboarding Gateway Info */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col gap-6"
+          >
+            {/* Tag Badge */}
+            <div className="flex">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none">
+                <HugeiconsIcon icon={SparklesIcon} size={12} className="text-green-500 animate-pulse" />
+                Yorùbá Cohort Registration
               </span>
             </div>
 
-            <AnimatePresence mode="wait">
-              {!submitted ? (
-                <motion.form
-                  key={`step-${step}`}
-                  initial={{ opacity: 0, x: 15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -15 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  onSubmit={step === 3 ? handleSubmit : handleNext}
-                  className="flex flex-col gap-6"
-                >
-                  {/* STEP 1: Parent/Guardian Contact Info */}
-                  {step === 1 && (
-                    <>
-                      <div>
-                        <h2 className="font-heading text-xl text-gray-900 font-bold mb-1">
-                          Parent & Guardian Details
-                        </h2>
-                        <p className="text-xs text-gray-400">Please provide your contact details so we can reach you.</p>
-                      </div>
+            {/* Heading */}
+            <h2 className="font-heading-two text-3xl sm:text-4xl lg:text-[42px] text-gray-950 leading-[1.15]">
+              Embark on an Exciting <span className="text-green-600 font-medium">Yorùbá Learning Journey</span>
+            </h2>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label htmlFor="p-name" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Full Name
-                          </label>
-                          <div className="relative">
-                            <input
-                              type="text"
-                              id="p-name"
-                              required
-                              placeholder="e.g. Dr. Kemi Cole"
-                              value={formData.parentName}
-                              onChange={(e) => updateField('parentName', e.target.value)}
-                              className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-gray-800"
-                            />
-                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
-                              <HugeiconsIcon icon={UserIcon} size={16} />
-                            </div>
-                          </div>
-                        </div>
+            {/* Description */}
+            <p className="text-base text-gray-500 leading-relaxed max-w-xl">
+              Thank you for your interest in enrolling your kids in our online Yorùbá language sessions! Complete our brief enrollment form to initiate your child's onboarding.
+            </p>
 
-                        <div>
-                          <label htmlFor="p-relation" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Relationship to Student
-                          </label>
-                          <div className="relative">
-                            <select
-                              id="p-relation"
-                              value={formData.relation}
-                              onChange={(e) => updateField('relation', e.target.value)}
-                              className="w-full px-4.5 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer text-gray-800 font-medium"
-                            >
-                              <option value="Parent">Parent</option>
-                              <option value="Guardian">Guardian</option>
-                              <option value="Adult Student">Adult Student (Self)</option>
-                              <option value="Sponsor">Sponsor/Relative</option>
-                            </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                              ▼
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label htmlFor="p-email" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Email Address
-                          </label>
-                          <div className="relative">
-                            <input
-                              type="email"
-                              id="p-email"
-                              required
-                              placeholder="name@domain.com"
-                              value={formData.parentEmail}
-                              onChange={(e) => updateField('parentEmail', e.target.value)}
-                              className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-gray-800"
-                            />
-                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
-                              <HugeiconsIcon icon={Mail01Icon} size={16} />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <label htmlFor="p-phone" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            WhatsApp Phone Number
-                          </label>
-                          <div className="relative">
-                            <input
-                              type="tel"
-                              id="p-phone"
-                              required
-                              placeholder="e.g. +44 7934 808642"
-                              value={formData.parentPhone}
-                              onChange={(e) => updateField('parentPhone', e.target.value)}
-                              className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-gray-800"
-                            />
-                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
-                              <HugeiconsIcon icon={WhatsappIcon} size={16} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {/* STEP 2: Student Profile Info */}
-                  {step === 2 && (
-                    <>
-                      <div>
-                        <h2 className="font-heading text-xl text-gray-900 font-bold mb-1">
-                          Student Profile
-                        </h2>
-                        <p className="text-xs text-gray-400">Provide details about the learner joining Native Academy.</p>
-                      </div>
-
-                      <div>
-                        <label htmlFor="s-name" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                          Student&apos;s Full Name
-                        </label>
-                        <div className="relative">
-                          <input
-                            type="text"
-                            id="s-name"
-                            required
-                            placeholder="e.g. Adewale Cole"
-                            value={formData.studentName}
-                            onChange={(e) => updateField('studentName', e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-gray-800"
-                          />
-                          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400">
-                            <HugeiconsIcon icon={UserIcon} size={16} />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label htmlFor="s-age" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Age Bracket
-                          </label>
-                          <div className="relative">
-                            <select
-                              id="s-age"
-                              value={formData.ageGroup}
-                              onChange={(e) => updateField('ageGroup', e.target.value)}
-                              className="w-full px-4.5 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer text-gray-800 font-medium"
-                            >
-                              <option value="3-6">Ages 3–6 (Toddler Track)</option>
-                              <option value="7-12">Ages 7–12 (Junior Academy)</option>
-                              <option value="13-17">Ages 13–17 (Teens & Youth)</option>
-                              <option value="18+">Ages 18+ (Young Adult/Self)</option>
-                            </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                              ▼
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <label htmlFor="s-level" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Current Language Exposure
-                          </label>
-                          <div className="relative">
-                            <select
-                              id="s-level"
-                              value={formData.languageLevel}
-                              onChange={(e) => updateField('languageLevel', e.target.value)}
-                              className="w-full px-4.5 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer text-gray-800 font-medium"
-                            >
-                              <option value="Beginner">Absolute Beginner (Zero words)</option>
-                              <option value="Receptive">Understands, but does not speak</option>
-                              <option value="Basic">Speaks simple words/greetings</option>
-                              <option value="Intermediate">Comfortable with basic sentences</option>
-                            </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                              ▼
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  {/* STEP 3: Language Track & Goals */}
-                  {step === 3 && (
-                    <>
-                      <div>
-                        <h2 className="font-heading text-xl text-gray-900 font-bold mb-1">
-                          Academy Track & Goals
-                        </h2>
-                        <p className="text-xs text-gray-400">Select the native language programs you wish to enroll in.</p>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                          <label htmlFor="s-lang" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Select Language Track
-                          </label>
-                          <div className="relative">
-                            <select
-                              id="s-lang"
-                              value={formData.languageOfInterest}
-                              onChange={(e) => updateField('languageOfInterest', e.target.value)}
-                              className="w-full px-4.5 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer text-gray-800 font-medium"
-                            >
-                              <option value="yoruba">Yorùbá Academy (Active Enrollment)</option>
-                              <option value="igbo">Igbo (Join Priority Waitlist)</option>
-                              <option value="swahili">Swahili (Join Priority Waitlist)</option>
-                              <option value="zulu">Zulu (Join Priority Waitlist)</option>
-                              <option value="twi">Twi (Join Priority Waitlist)</option>
-                              <option value="hausa">Hausa (Join Priority Waitlist)</option>
-                            </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                              ▼
-                            </div>
-                          </div>
-                          {formData.languageOfInterest !== 'yoruba' && (
-                            <p className="text-[11px] text-amber-600 font-medium mt-1">
-                              * You will vote on this language and join the waitlist!
-                            </p>
-                          )}
-                        </div>
-
-                        <div>
-                          <label htmlFor="s-goal" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                            Primary Goal of Enrollment
-                          </label>
-                          <div className="relative">
-                            <select
-                              id="s-goal"
-                              value={formData.goal}
-                              onChange={(e) => updateField('goal', e.target.value)}
-                              className="w-full px-4.5 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors appearance-none cursor-pointer text-gray-800 font-medium"
-                            >
-                              <option value="identity">Connect with cultural identity & heritage</option>
-                              <option value="conversation">Speak confidently with home family</option>
-                              <option value="understanding">Understand parent/grandparent dialogues</option>
-                              <option value="relocation">Prepare for future visits or relocation</option>
-                              <option value="general">A broad educational appreciation</option>
-                            </select>
-                            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 text-xs">
-                              ▼
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label htmlFor="s-msg" className="block text-xs font-bold text-gray-600 uppercase tracking-wider mb-1.5">
-                          Questions, Concerns, or Special Requirements
-                        </label>
-                        <textarea
-                          id="s-msg"
-                          rows={3}
-                          placeholder="e.g. Any scheduling conflicts, specific learning objectives, or prior tutor experience..."
-                          value={formData.message}
-                          onChange={(e) => updateField('message', e.target.value)}
-                          className="w-full px-4 py-3 text-sm bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-all text-gray-800"
-                        />
-                      </div>
-                    </>
-                  )}
-
-                  {/* Buttons Navigation */}
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200/60">
-                    {step > 1 ? (
-                      <Button
-                        type="button"
-                        onClick={handlePrev}
-                        variant="outline"
-                        className="rounded-full px-6 py-2.5 h-auto border-gray-200 hover:bg-gray-100 text-gray-600 transition-all shadow-none"
-                      >
-                        Previous Step
-                      </Button>
-                    ) : (
-                      <div />
-                    )}
-
-                    <Button
-                      type="submit"
-                      disabled={loading}
-                      className="rounded-full px-7 py-3 h-auto bg-green-600 hover:bg-green-700 text-white font-medium transition-all shadow-none flex items-center gap-1.5"
-                    >
-                      {loading ? (
-                        <>
-                          <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          Submitting...
-                        </>
-                      ) : step === 3 ? (
-                        <>
-                          Submit Registration
-                          <HugeiconsIcon icon={CheckmarkCircle02Icon} size={18} />
-                        </>
-                      ) : (
-                        <>
-                          Next Step
-                          <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </motion.form>
-              ) : (
-                <motion.div
-                  key="success-screen"
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4 }}
-                  className="flex flex-col items-center text-center py-10 px-4"
-                >
-                  <div className="w-16 h-16 rounded-full bg-green-50 border border-green-200 flex items-center justify-center text-green-600 mb-6 animate-bounce">
-                    <HugeiconsIcon icon={CheckmarkCircle02Icon} size={40} />
-                  </div>
-                  <h3 className="font-heading text-2xl text-gray-950 font-normal mb-3">
-                    Ẹ kú àbọ̀! (Welcome!)
-                  </h3>
-                  <p className="text-sm text-gray-500 max-w-md leading-relaxed mb-8">
-                    Thank you for initiating your child&apos;s journey back to their heritage. We have received your inquiry for <strong className="text-gray-900">{formData.studentName || 'your child'}</strong>. 
-                    A curriculum advisor will review your passport application and contact you at <strong className="text-gray-900">{formData.parentEmail}</strong> or via WhatsApp at <strong className="text-gray-900">{formData.parentPhone}</strong> within 24 hours.
-                  </p>
-                  
-                  <div className="flex gap-4">
-                    <Button
-                      onClick={() => {
-                        setSubmitted(false);
-                        setStep(1);
-                        setFormData(initialFormData);
-                      }}
-                      variant="outline"
-                      className="rounded-full px-6 py-2.5"
-                    >
-                      Fill Another Form
-                    </Button>
-                    
-                    <Button
-                      asChild
-                      className="rounded-full px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white"
-                    >
-                      <a href="/">Back to Home</a>
-                    </Button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-          </div>
-
-          {/* Right Side: Passport Preview Component */}
-          <div className="w-full lg:sticky lg:top-28">
-            <motion.div
-              whileHover={{ y: -6, rotate: 0.5 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              className="bg-green-950 rounded-3xl border border-green-800 p-6 md:p-8 text-white relative overflow-hidden shadow-xl shadow-green-950/15"
-            >
-              {/* Pattern Background Overlay */}
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--green-900)_0%,transparent_75%)] pointer-events-none opacity-80" />
-              <div className="absolute bottom-[-100px] right-[-100px] w-52 h-52 bg-green-600/10 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Passport Header */}
-              <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-5 mb-5">
-                <div className="flex items-center gap-2">
-                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="15" fill="var(--green-400)" />
-                    <path d="M10 22V10l6 4 6-4v12l-6-4-6 4z" fill="var(--green-950)" />
-                  </svg>
-                  <div>
-                    <h3 className="font-heading text-sm text-white leading-none">NATIVE ACADEMY</h3>
-                    <p className="text-[10px] text-green-400 font-mono tracking-widest leading-none mt-1">PASSPORT OFFICE</p>
-                  </div>
-                </div>
-
-                <div className="px-2.5 py-1 rounded bg-white/5 border border-white/10 font-mono text-[9px] text-gray-300">
-                  REF: NA-{1000 + Math.floor(Math.random() * 9000)}
-                </div>
-              </div>
-
-              {/* Passport Title */}
-              <div className="relative z-10 mb-6 text-center">
-                <h4 className="font-heading text-lg font-bold text-green-300 uppercase tracking-[0.06em]">
-                  Diaspora Learner Passport
+            {/* Onboarding Pathway Timeline */}
+            <div className="relative flex flex-col gap-8 my-4 pl-4 border-l-2 border-green-100">
+              
+              {/* Step 1 */}
+              <div className="relative pl-6">
+                {/* Timeline Dot */}
+                <div className="absolute left-[-23px] top-0.5 w-4 h-4 rounded-full bg-green-600 ring-4 ring-green-50 border border-white flex items-center justify-center" />
+                <h4 className="font-heading text-base font-bold text-gray-900 leading-none mb-2">
+                  01. Tell Us About Your Kids
                 </h4>
-                <p className="text-[11px] text-gray-400 italic">Connecting African Roots & Generations</p>
+                <p className="text-sm text-gray-500 leading-relaxed max-w-lg">
+                  Submit the Google Form with your child's age, language exposure level, and preferred timezone. It takes less than 2 minutes.
+                </p>
               </div>
 
-              {/* Passport Bio Area */}
-              <div className="relative z-10 grid grid-cols-[100px_1fr] gap-5 items-start">
+              {/* Step 2 */}
+              <div className="relative pl-6">
+                {/* Timeline Dot */}
+                <div className="absolute left-[-23px] top-0.5 w-4 h-4 rounded-full bg-green-200 border border-white flex items-center justify-center" />
+                <h4 className="font-heading text-base font-bold text-gray-900 leading-none mb-2">
+                  02. Cohort Group Chat Invite
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed max-w-lg">
+                  Once we receive your details, we will invite you to join our dedicated WhatsApp cohort group chat.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative pl-6">
+                {/* Timeline Dot */}
+                <div className="absolute left-[-23px] top-0.5 w-4 h-4 rounded-full bg-green-200 border border-white flex items-center justify-center" />
+                <h4 className="font-heading text-base font-bold text-gray-900 leading-none mb-2">
+                  03. Meet Your Tutors & Begin
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed max-w-lg">
+                  Meet our experienced native-speaking tutors, confirm your cohort slot, and let your kid(s) start exploring the rich and vibrant Yorùbá language.
+                </p>
+              </div>
+
+            </div>
+
+            {/* CTA Actions */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mt-2">
+              <Button
+                asChild
+                className="rounded-full px-8 py-3.5 h-auto bg-green-600 hover:bg-green-700 text-white font-medium shadow-lg shadow-green-600/10 hover:shadow-green-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 text-base cursor-pointer"
+              >
+                <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
+                  Register for Yorùbá Cohort
+                  <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
+                </a>
+              </Button>
+              
+              <div className="text-xs text-gray-400 font-medium flex items-center gap-2 px-1 py-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping inline-block shrink-0" />
+                Registrations active for {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}
+              </div>
+            </div>
+
+            {/* Trust Info */}
+            <div className="text-xs text-gray-400 mt-2 flex flex-wrap gap-x-6 gap-y-2 border-t border-gray-100 pt-5">
+              <span className="flex items-center gap-1.5">
+                ⚡ Completion Time: ~2 mins
+              </span>
+              <span className="flex items-center gap-1.5">
+                💬 Group Chat Invite Sent Promptly
+              </span>
+              <span className="flex items-center gap-1.5">
+                🔒 Safe & Private Data
+              </span>
+            </div>
+
+          </motion.div>
+
+          {/* Right Side: Creative Registration Ticket */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full flex justify-center items-center"
+          >
+            <a 
+              href={googleFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full max-w-[420px] block no-underline focus:outline-none"
+            >
+              <motion.div
+                whileHover={{ y: -8, rotate: 1, scale: 1.01 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+                className="bg-green-950 rounded-3xl border border-green-800 text-white relative overflow-hidden shadow-2xl shadow-green-950/20 group cursor-pointer"
+              >
+                {/* Glossy Overlay effect */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,184,106,0.15)_0%,transparent_70%)] pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_0%,transparent_50%)] pointer-events-none" />
                 
-                {/* Photo Placeholder */}
-                <div className="w-[100px] h-[125px] bg-green-900/50 border border-white/15 rounded-xl overflow-hidden flex flex-col items-center justify-center relative group">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <HugeiconsIcon icon={UserIcon} size={36} className="text-green-300/40" />
-                  <span className="text-[9px] text-green-400 font-mono mt-2 select-none uppercase tracking-wide">
-                    {formData.studentName ? 'VALID PHOTO' : 'PHOTO STAMP'}
-                  </span>
+                {/* Gold Pattern background accent */}
+                <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute top-1/4 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl pointer-events-none" />
 
-                  {/* Confirmed Stamp Overlay */}
-                  {formData.studentName && (
-                    <motion.div
-                      initial={{ scale: 2, opacity: 0, rotate: -20 }}
-                      animate={{ scale: 1, opacity: 1, rotate: -15 }}
-                      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2.5 py-1.5 border-2 rounded-md font-heading font-black text-[10px] text-center select-none uppercase tracking-wider backdrop-blur-[1px] ${
-                        isWaitlist
-                          ? 'border-amber-500/80 text-amber-400 bg-amber-950/70'
-                          : 'border-green-400/80 text-green-400 bg-green-950/70'
-                      }`}
-                    >
-                      {isWaitlist ? 'WAITLISTED' : 'CONFIRMED'}
-                    </motion.div>
-                  )}
-                </div>
+                {/* Main Ticket Container */}
+                <div className="p-6 md:p-8 flex flex-col justify-between min-h-[460px]">
+                  
+                  {/* Top section: Header & Logo */}
+                  <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-5 relative">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-green-500/10 border border-green-400/25 flex items-center justify-center shrink-0">
+                        {/* Custom Sparkles/Education SVG */}
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-green-400">
+                          <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3Z" fill="currentColor"/>
+                          <path d="M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" fill="currentColor"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <span className="font-heading text-xs uppercase tracking-widest text-green-400 block leading-none">NATIVE ACADEMY</span>
+                        <span className="text-[10px] text-gray-300 font-mono tracking-wider block mt-1">YORÙBÁ ACADEMY ADMISSIONS</span>
+                      </div>
+                    </div>
 
-                {/* Passport Fields */}
-                <div className="flex flex-col gap-3 font-mono text-[12px]">
-                  <div>
-                    <span className="text-[10px] text-gray-500 block leading-tight font-sans">FULL NAME</span>
-                    <span className="font-semibold text-gray-100 uppercase tracking-wide truncate block max-w-[180px]">
-                      {formData.studentName || '• • • • • • • • • •'}
-                    </span>
+                    <div className="font-mono text-[10px] text-gray-300 bg-white/5 border border-white/10 rounded-md px-2.5 py-1">
+                      {inviteRef || 'YA-2026'}
+                    </div>
                   </div>
 
-                  <div>
-                    <span className="text-[10px] text-gray-500 block leading-tight font-sans">AGE CATEGORY</span>
-                    <span className="font-semibold text-gray-100 uppercase block">
-                      {formData.ageGroup ? `${formData.ageGroup} YEARS` : '• • • •'}
-                    </span>
+                  {/* Program Detail Ticket Body */}
+                  <div className="space-y-6">
+                    {/* Hero Title inside Ticket */}
+                    <div className="text-center">
+                      <div className="text-[10px] uppercase font-mono tracking-[0.2em] text-amber-400/80 mb-1">SESSION REGISTRATION</div>
+                      <h3 className="font-heading text-xl md:text-2xl text-white font-normal uppercase tracking-wide">
+                        Yorùbá Cohort Invite
+                      </h3>
+                      <p className="text-[11px] text-gray-400 font-mono italic mt-1">Interactive Language & Culture Sessions</p>
+                    </div>
+
+                    {/* Program Detail Grid */}
+                    <div className="grid grid-cols-2 gap-y-4 gap-x-6 border-t border-b border-white/5 py-5 font-mono text-xs">
+                      <div>
+                        <span className="text-[9px] text-gray-500 block mb-0.5">LEARNING TRACK</span>
+                        <span className="text-white font-bold tracking-wide">ONLINE YORÙBÁ</span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-gray-500 block mb-0.5">CLASS SIZE</span>
+                        <span className="text-amber-400 font-bold tracking-wide">INTIMATE (MAX 6)</span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-gray-500 block mb-0.5">TUTORS</span>
+                        <span className="text-white font-bold tracking-wide">EXPERIENCED NATIVE</span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] text-gray-500 block mb-0.5">STATUS</span>
+                        <span className="text-green-400 font-bold tracking-wide flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-ping" />
+                          INTAKE ACTIVE
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Pathway description inside ticket */}
+                    <div className="flex items-center justify-between px-4 py-2 bg-white/5 border border-white/10 rounded-2xl relative">
+                      <div className="text-left">
+                        <span className="text-[14px] font-heading text-white block leading-none font-bold">REGISTER</span>
+                        <span className="text-[9px] text-gray-400 font-mono">STEP 1</span>
+                      </div>
+                      
+                      {/* Connecting Line with Globe */}
+                      <div className="flex-1 flex items-center justify-center px-4 relative">
+                        <div className="w-full h-[1px] border-t border-dashed border-white/20" />
+                        <div className="absolute flex items-center justify-center p-1 rounded-full bg-green-950 border border-white/10 text-green-400 transform group-hover:translate-x-3 transition-transform duration-700">
+                          <HugeiconsIcon icon={GlobeIcon} size={14} className="animate-spin-slow" />
+                        </div>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="text-[14px] font-heading text-green-400 block leading-none font-bold">GROUP CHAT</span>
+                        <span className="text-[9px] text-gray-400 font-mono">STEP 2</span>
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
-                    <span className="text-[10px] text-gray-500 block leading-tight font-sans">DESTINATION</span>
-                    <span className="font-semibold text-green-400 uppercase tracking-wide block truncate max-w-[180px]">
-                      {getDestinationName(formData.languageOfInterest)}
-                    </span>
+                  {/* Dotted Tear-off Coupon Line */}
+                  <div className="relative my-6 select-none pointer-events-none">
+                    <div className="absolute left-[-32px] top-1/2 -translate-y-1/2 w-4 h-8 bg-white rounded-r-full border-r border-t border-b border-green-800" />
+                    <div className="absolute right-[-32px] top-1/2 -translate-y-1/2 w-4 h-8 bg-white rounded-l-full border-l border-t border-b border-green-800" />
+                    <div className="w-full border-t-2 border-dashed border-white/20" />
                   </div>
 
-                  <div>
-                    <span className="text-[10px] text-gray-500 block leading-tight font-sans">LANGUAGE LEVEL</span>
-                    <span className="font-semibold text-gray-100 uppercase block">
-                      {formData.languageLevel || '• • • •'}
-                    </span>
+                  {/* Bottom Coupon Section */}
+                  <div className="flex items-center justify-between relative">
+                    <div className="space-y-1">
+                      <span className="text-[9px] text-gray-500 block font-mono uppercase">Gate Invitation</span>
+                      <span className="text-xs font-heading font-medium text-gray-200 group-hover:text-green-400 transition-colors flex items-center gap-1.5">
+                        Register via Google Form 
+                        <span className="group-hover:translate-x-1 transition-transform">➔</span>
+                      </span>
+                    </div>
+
+                    {/* Stylized Barcode SVG */}
+                    <div className="bg-white/95 rounded-lg p-2 flex flex-col items-center gap-1 shrink-0 group-hover:bg-white transition-colors">
+                      <svg width="72" height="26" viewBox="0 0 72 26" fill="black">
+                        {/* Barcode lines */}
+                        <rect x="2" y="2" width="2" height="22" />
+                        <rect x="6" y="2" width="1" height="22" />
+                        <rect x="8" y="2" width="3" height="22" />
+                        <rect x="13" y="2" width="1" height="22" />
+                        <rect x="16" y="2" width="2" height="22" />
+                        <rect x="20" y="2" width="4" height="22" />
+                        <rect x="26" y="2" width="1" height="22" />
+                        <rect x="29" y="2" width="2" height="22" />
+                        <rect x="33" y="2" width="1" height="22" />
+                        <rect x="36" y="2" width="3" height="22" />
+                        <rect x="41" y="2" width="2" height="22" />
+                        <rect x="45" y="2" width="1" height="22" />
+                        <rect x="48" y="2" width="4" height="22" />
+                        <rect x="54" y="2" width="1" height="22" />
+                        <rect x="57" y="2" width="2" height="22" />
+                        <rect x="61" y="2" width="3" height="22" />
+                        <rect x="66" y="2" width="1" height="22" />
+                        <rect x="68" y="2" width="2" height="22" />
+                      </svg>
+                      <span className="text-[7px] text-gray-800 font-mono tracking-widest leading-none font-bold uppercase">JOIN COHORT</span>
+                    </div>
                   </div>
+
                 </div>
 
-              </div>
-
-              {/* Passport Footer Info / Stamp */}
-              <div className="relative z-10 mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
-                <div>
-                  <span className="text-[9px] text-gray-500 block font-mono">PASSPORT STATUS</span>
-                  <span className="text-xs font-semibold text-gray-200 flex items-center gap-1.5">
-                    <span className={`w-2 h-2 rounded-full ${formData.studentName ? 'bg-green-400 animate-pulse' : 'bg-gray-600'}`} />
-                    {formData.studentName
-                      ? isWaitlist
-                        ? 'Priority Waitlist Active'
-                        : 'Cohort Intake Open'
-                      : 'Awaiting Application'}
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-1 text-[10px] text-green-400/60 font-mono">
-                  <HugeiconsIcon icon={GlobeIcon} size={14} className="animate-spin-slow" />
-                  DIASPORA HUB
-                </div>
-              </div>
-
-            </motion.div>
-          </div>
+              </motion.div>
+            </a>
+          </motion.div>
 
         </div>
-
+        
       </div>
     </section>
   );

@@ -140,13 +140,13 @@ export default function YorubaAcademy() {
         </div>
 
         {/* Part 1: Interactive Age Bracket Tracks */}
-        <div className="mb-20">
-          <h3 className="font-heading text-lg sm:text-xl text-gray-950 font-bold mb-6">
+        {/* <div className="mb-20"> */}
+        {/* <h3 className="font-heading text-lg sm:text-xl text-gray-950 font-bold mb-6">
             Customised Tracks for Learners Aged 3 to 25
-          </h3>
+          </h3> */}
 
-          {/* Tabs Navigation */}
-          <div className="flex gap-2.5 p-1.5 bg-gray-200/50 rounded-2xl max-w-xl mb-8 overflow-x-auto scrollbar-none">
+        {/* Tabs Navigation */}
+        {/* <div className="flex gap-2.5 p-1.5 bg-gray-200/50 rounded-2xl max-w-xl mb-8 overflow-x-auto scrollbar-none">
             {tracks.map((t) => (
               <button
                 key={t.id}
@@ -159,10 +159,10 @@ export default function YorubaAcademy() {
                 {t.title}
               </button>
             ))}
-          </div>
+          </div> */}
 
-          {/* Active Tab Content Panel */}
-          <AnimatePresence mode="wait">
+        {/* Active Tab Content Panel */}
+        {/* <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
               initial={{ opacity: 0, y: 15 }}
@@ -197,10 +197,10 @@ export default function YorubaAcademy() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              {/* Decorative custom mockup inside the tab panel */}
-              <div className="hidden lg:flex flex-col gap-3.5 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm w-full cursor-default">
+        {/* Decorative custom mockup inside the tab panel */}
+        {/* <div className="hidden lg:flex flex-col gap-3.5 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm w-full cursor-default">
                 <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Class Preview</span>
                 <div className="flex gap-3 items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${activeTrack.badgeClass}`}>
@@ -218,10 +218,11 @@ export default function YorubaAcademy() {
                 <div className="text-[11px] text-gray-500 leading-relaxed italic bg-gray-50 p-3 rounded-lg border border-gray-100">
                   &ldquo;Ìkíni: We start with proper greetings to adults. In Yoruba culture, respect is woven directly into how we say hello.&rdquo;
                 </div>
-              </div>
-            </motion.div>
+              </div> */}
+        {/* </motion.div>
           </AnimatePresence>
-        </div>
+        </div> */}
+        {/* </div> */}
 
         {/* Part 2: Program Features Grid */}
         <div className="mb-20">

@@ -153,7 +153,7 @@ export default function Navbar() {
                 { label: 'Programmes', href: '/services' },
                 { label: 'Media', href: '/media' },
                 { label: 'Testimonials', href: '/#testimonials' },
-                { label: 'FAQ', href: '/#faq' },
+                { label: 'FAQ', href: '/faq' },
               ].map((item) => {
                 const active = pathname === item.href;
                 return (

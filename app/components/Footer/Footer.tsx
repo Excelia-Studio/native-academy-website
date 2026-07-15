@@ -78,6 +78,7 @@ export default function Footer() {
               {
                 title: 'Support',
                 links: [
+                  { label: 'FAQ', href: '/faq' },
                   { label: 'Privacy Policy', href: '/privacy-policy' },
                   { label: 'Terms of Service', href: '/terms-of-service' },
                 ],
