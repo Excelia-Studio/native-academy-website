@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -132,10 +133,10 @@ export default function WhoWeAre() {
           >
             <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-auto px-7 py-3.5 h-auto bg-green-400 hover:bg-green-300 text-gray-950 font-medium rounded-full shadow-lg shadow-green-400/20 transition-all">
-                <a href="/about-us" id="whoweare-cta">
+                <Link href="/about-us" id="whoweare-cta">
                   Know more
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-                </a>
+                </Link>
               </Button>
             </motion.div>
           </motion.div>

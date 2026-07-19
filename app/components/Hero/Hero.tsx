@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -88,10 +89,10 @@ export default function Hero() {
             </motion.div>
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-7 border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full h-auto py-3.5 transition-all">
-                <a href="/media" id="hero-cta-secondary">
+                <Link href="/media" id="hero-cta-secondary">
                   <HugeiconsIcon icon={PlayIcon} size={18} />
                   Watch free lesson
-                </a>
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -101,7 +102,7 @@ export default function Hero() {
             className="flex items-center justify-start gap-16 pt-6 border-t border-gray-100 w-full flex-wrap sm:flex-nowrap"
           >
             <motion.div whileHover={{ y: -2 }} className="flex flex-col gap-0.5 transition-transform">
-              <span className="font-heading text-[22px] text-gray-900">500+</span>
+              <span className="font-heading text-[22px] text-gray-900">100+</span>
               <span className="text-[13px] text-gray-400">Students Enrolled</span>
             </motion.div>
 

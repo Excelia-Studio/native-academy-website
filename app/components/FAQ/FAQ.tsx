@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -69,10 +70,10 @@ export default function FAQ() {
           </p>
           <motion.div variants={itemVariants} whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
             <Button asChild size="lg" className="w-auto px-7 py-3 h-auto bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full transition-all">
-              <a href="/faq" id="whatwedo-cta">
+              <Link href="/faq" id="whatwedo-cta">
                 See more
                 <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-              </a>
+              </Link>
             </Button>
           </motion.div>
         </motion.div>

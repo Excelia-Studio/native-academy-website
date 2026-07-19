@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'motion/react';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowRight01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
@@ -86,10 +87,10 @@ export default function AboutLookingForward() {
           <motion.div variants={itemVariants} className="pt-2">
             <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-auto px-7 py-3.5 h-auto bg-green-400 hover:bg-green-300 text-gray-950 font-medium rounded-full shadow-lg shadow-green-400/20 transition-all">
-                <a href="/services" id="about-looking-forward-cta">
+                <Link href="/services" id="about-looking-forward-cta">
                   View current classes
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
-                </a>
+                </Link>
               </Button>
             </motion.div>
           </motion.div>

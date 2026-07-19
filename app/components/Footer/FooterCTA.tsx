@@ -15,8 +15,7 @@ import {
 
 const perks = [
   'Live 1-on-1 & Small Group Tutors',
-  'Flexible Weekend & Evening Slots',
-  '7-Day Risk-Free Guarantee',
+  'Flexible Weekend & Evening Classes',
 ];
 
 export default function FooterCTA() {
@@ -41,7 +40,7 @@ export default function FooterCTA() {
                 className="inline-flex items-center justify-start gap-2 self-start px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md text-emerald-300 text-xs font-semibold tracking-wide uppercase"
               >
                 <HugeiconsIcon icon={SparklesIcon} size={15} className="text-emerald-400 animate-pulse" />
-                <span>Join 500+ Diaspora Families Today</span>
+                <span>Join 50+ Diaspora Families Today</span>
               </motion.div>
 
               {/* Title */}
@@ -98,7 +97,7 @@ export default function FooterCTA() {
                         <HugeiconsIcon key={i} icon={StarIcon} size={14} className="fill-amber-400" />
                       ))}
                     </div>
-                    <span className="text-xs text-gray-300 font-medium">4.9/5 from 500+ parents</span>
+                    <span className="text-xs text-gray-300 font-medium">4.9/5 from 50+ parents</span>
                   </div>
                 </div>
 
@@ -185,27 +184,38 @@ export default function FooterCTA() {
                 </button>
               </div>
 
-              {/* Video Container placeholder/iframe */}
-              <div className="relative aspect-video rounded-xl bg-gray-950 overflow-hidden border border-white/10 flex flex-col items-center justify-center text-center p-6">
-                <div className="w-16 h-16 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mb-4 border border-amber-500/40 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
-                  <HugeiconsIcon icon={PlayIcon} size={32} className="ml-1 fill-amber-400" />
+              {/* Video Container */}
+              <div className="relative aspect-video rounded-xl bg-gray-950 overflow-hidden border border-white/10 flex items-center justify-center shadow-inner">
+                <video
+                  src="/videos/episode1.mp4"
+                  className="w-full h-full object-cover"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              </div>
+
+              {/* Info & CTA Action */}
+              <div className="mt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex flex-col gap-0.5">
+                  <h4 className="text-white font-semibold text-base">Episode 1: ÌKÍNI (Greetings)</h4>
+                  <p className="text-gray-400 text-xs max-w-md">
+                    Learn the foundational building blocks of greeting and showing respect in Yorùbá.
+                  </p>
                 </div>
-                <h4 className="text-white font-bold text-xl mb-2">Sample Interactive Yorùbá Class</h4>
-                <p className="text-gray-400 text-sm max-w-md">
-                  Watch how our certified native tutors make learning engaging, fun, and natural for kids aged 3–16.
-                </p>
-                <div className="mt-6 flex gap-3">
-                  <Button
-                    onClick={() => {
-                      setIsVideoModalOpen(false);
-                      const el = document.getElementById('footer-cta-primary');
-                      if (el) el.click();
-                    }}
-                    className="bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold px-6 py-2.5 rounded-lg text-sm"
+                <Button
+                  asChild
+                  className="bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold px-6 py-2.5 rounded-full text-sm shrink-0 border-0"
+                >
+                  <a
+                    href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsVideoModalOpen(false)}
                   >
-                    Enroll in Trial Now
-                  </Button>
-                </div>
+                    Enroll Now
+                  </a>
+                </Button>
               </div>
             </motion.div>
           </motion.div>

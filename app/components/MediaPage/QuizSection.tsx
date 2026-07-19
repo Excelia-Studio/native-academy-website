@@ -228,21 +228,27 @@ export default function QuizSection() {
                   </p>
 
                   <div className="flex gap-2.5 items-center text-[11px] text-gray-400 font-semibold mb-2">
-                    <span>4 Questions</span>
+                    <span>{quiz.id === 'greetings' ? '10 Questions' : '5 Questions'}</span>
                     <span>•</span>
                     <span>Instant Feedback</span>
                   </div>
 
                   <Button
-                    onClick={() => handleSelectQuiz(quiz.id)}
+                    asChild
                     className={`mt-auto w-full rounded-full py-3 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer transition-all duration-300 ${
                       quiz.accentColor === 'green'
                         ? 'bg-green-600 hover:bg-green-700 text-white'
                         : 'bg-amber-500 hover:bg-amber-600 text-white'
                     }`}
                   >
-                    Start Challenge
-                    <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                    <a
+                      href={quiz.id === 'greetings' ? 'https://wayground.com/join?gc=17731948' : 'https://wayground.com/join?gc=56021356'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Start Challenge
+                      <HugeiconsIcon icon={ArrowRight01Icon} size={14} />
+                    </a>
                   </Button>
                 </motion.div>
               ))}

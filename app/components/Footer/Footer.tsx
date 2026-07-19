@@ -1,19 +1,17 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import FooterCTA from './FooterCTA';
 import { HugeiconsIcon } from '@hugeicons/react';
 import {
   FacebookIcon,
   InstagramIcon,
-  TwitterIcon,
-  YoutubeIcon,
 } from '@hugeicons/core-free-icons';
 
 const socials = [
   { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/p/Native-Academy-61578914925330/' },
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/reel/DNvaD4wYkUf/' },
-  { icon: TwitterIcon, label: 'Twitter', href: '#' },
-  { icon: YoutubeIcon, label: 'YouTube', href: '#' },
 ];
 
 export default function Footer() {
@@ -27,11 +25,14 @@ export default function Footer() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] gap-8 lg:gap-10 pb-10 border-b border-white/10">
             <div className="flex flex-col gap-4 col-span-1 md:col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-2">
-                <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="15" fill="var(--green-400)" />
-                  <path d="M10 22V10l6 4 6-4v12l-6-4-6 4z" fill="var(--gray-950)" />
-                </svg>
+              <div className="h-10 w-10 flex gap-2 items-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={130}
+                  height={130}
+                  className="object-coveer"
+                />
                 <span className="font-heading text-lg text-white">
                   Native<span className="text-green-400">Academy</span>
                 </span>
@@ -48,6 +49,8 @@ export default function Footer() {
                       href={s.href}
                       className="w-8 h-8 rounded-[6px] bg-white/5 flex items-center justify-center text-gray-400 hover:bg-green-600 hover:text-white transition-colors no-underline"
                       aria-label={s.label}
+                      target='_blank'
+                      rel='noopener noreferrer'
                     >
                       <HugeiconsIcon icon={Icon} size={16} />
                     </a>
@@ -89,9 +92,9 @@ export default function Footer() {
                   {col.title}
                 </h3>
                 {col.links.map((link) => (
-                  <a key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] no-underline">
+                  <Link key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] no-underline">
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}

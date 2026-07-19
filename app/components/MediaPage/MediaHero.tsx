@@ -86,7 +86,7 @@ export default function MediaHero() {
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
                 <a href="#video-hub">
-                  Start Watching
+                  Start watching
                   <HugeiconsIcon icon={PlayIcon} size={16} />
                 </a>
               </Button>
@@ -94,7 +94,7 @@ export default function MediaHero() {
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-7 border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full h-auto py-3.5 transition-all">
                 <a href="#quizzes">
-                  Try Interactive Quizzes
+                  Try interactive quizzes
                 </a>
               </Button>
             </motion.div>
@@ -134,7 +134,7 @@ export default function MediaHero() {
               {/* Simulated thumbnail */}
               <div className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:scale-105 transition-transform duration-700 ease-out" style={{ backgroundImage: `url('/images/hero.webp')` }} />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
-              
+
               {/* Play button overlay */}
               <div className="w-14 h-14 rounded-full bg-white/95 text-green-700 flex items-center justify-center shadow-lg group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 z-10">
                 <HugeiconsIcon icon={PlayIcon} size={22} className="ml-1" />

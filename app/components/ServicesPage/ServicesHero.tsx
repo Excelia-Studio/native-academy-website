@@ -91,13 +91,6 @@ export default function ServicesHero() {
                 </a>
               </Button>
             </motion.div>
-            {/* <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto px-7 border-gray-200 hover:border-green-300 hover:bg-green-50/80 text-green-800 font-medium rounded-full h-auto py-3.5 transition-all">
-                <a href="#waitlist" id="hero-btn-secondary">
-                  Join language waitlist
-                </a>
-              </Button>
-            </motion.div> */}
           </motion.div>
 
           <motion.div
@@ -181,7 +174,7 @@ export default function ServicesHero() {
               <span className="text-[10px] font-heading font-semibold text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full uppercase tracking-wider">Coming Soon</span>
               <span className="text-[11px] text-amber-600 font-semibold font-heading">70% Voted</span>
             </div>
-            <h4 className="font-heading text-sm text-gray-900 font-semibold mb-2">Swahili Language Track</h4>
+            <h4 className="font-heading text-sm text-gray-900 font-semibold mb-2">Hausa Language Track</h4>
             <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden mb-1">
               <div className="bg-amber-500 h-full rounded-full" style={{ width: '70%' }} />
             </div>

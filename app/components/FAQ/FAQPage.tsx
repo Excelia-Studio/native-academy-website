@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -377,10 +378,10 @@ export default function FAQPage() {
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} className="w-full sm:w-auto">
                   <Button asChild variant="outline" size="default" className="w-full sm:w-auto px-6 border-white/10 hover:border-green-500 hover:bg-green-500/10 text-white font-medium rounded-full py-3.5 h-auto text-sm transition-all bg-transparent">
-                    <a href="/contact">
+                    <Link href="/contact">
                       <HugeiconsIcon icon={Mail01Icon} size={16} />
                       Contact Support
-                    </a>
+                    </Link>
                   </Button>
                 </motion.div>
               </div>

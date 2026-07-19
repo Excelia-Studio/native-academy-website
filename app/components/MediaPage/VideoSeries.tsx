@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import {
   PlayIcon,
   PauseIcon,
@@ -13,7 +15,9 @@ import {
   ReloadIcon,
   ArrowRight01Icon,
   ComputerIcon,
-  Clock01Icon
+  Clock01Icon,
+  FacebookIcon,
+  InstagramIcon
 } from '@hugeicons/core-free-icons';
 
 interface Episode {
@@ -25,8 +29,8 @@ interface Episode {
   durationSeconds: number;
   thumbnailColor: string;
   emoji: string;
+  videoUrl: string;
   vocab: { word: string; translation: string; phonetic: string; tip: string }[];
-  subtitles: { start: number; end: number; text: string }[];
 }
 
 const episodes: Episode[] = [
@@ -35,10 +39,11 @@ const episodes: Episode[] = [
     episodeNumber: 1,
     title: 'ÌKÍNI (Greetings)',
     description: 'The crucial first step into building real conversation blocks. Learn the foundation of showing respect in Yoruba.',
-    duration: '0:25',
-    durationSeconds: 25,
+    duration: '1:36',
+    durationSeconds: 96,
     thumbnailColor: 'from-green-600/90 to-green-800/95',
     emoji: '👋🏾',
+    videoUrl: '/videos/episode1.mp4',
     vocab: [
       { word: 'Ẹ káàárọ̀', translation: 'Good morning (Respectful)', phonetic: 'Eh-kah-ah-raw', tip: 'Used for parents, teachers, and elders. The prefix "Ẹ" shows respect.' },
       { word: 'Káàárọ̀', translation: 'Good morning (Casual)', phonetic: 'Kah-ah-raw', tip: 'Used for friends, classmates, or someone younger than you.' },
@@ -47,24 +52,17 @@ const episodes: Episode[] = [
       { word: 'Pẹlẹ o', translation: 'Hello / Sorry', phonetic: 'Peh-leh aw', tip: 'A general greeting to acknowledge someone, or express sympathy.' },
       { word: 'Ẹ n lẹ o', translation: 'Hello (Respectful / Plural)', phonetic: 'Eh-n-leh aw', tip: 'A polite way to greet an elder or a group of people at once.' },
     ],
-    subtitles: [
-      { start: 0, end: 4, text: 'Morayo: Káàárọ̀! Welcome to Èdè Aládùn: Sweet Language Series.' },
-      { start: 4, end: 8, text: 'Today, we are learning about ÌKÍNI (Greetings) in Yoruba culture.' },
-      { start: 8, end: 13, text: 'Respect is central to Yoruba identity! We use the prefix "Ẹ" to address elders.' },
-      { start: 13, end: 18, text: 'So, instead of just "Káàárọ̀", we say "Ẹ káàárọ̀" to parents and teachers.' },
-      { start: 18, end: 22, text: 'Let\'s practice! Say it after me: Ẹ - ká - à - á - rọ̀.' },
-      { start: 22, end: 25, text: 'Fantastic! Next time you see an elder, greet them with respect!' }
-    ]
   },
   {
     id: 'episode-2',
     episodeNumber: 2,
     title: 'Orúkọ Àwọn Ǹkan Tó Wà Nínú Kíláásì (Classroom items)',
     description: 'Empowering kids to label and speak about their everyday learning environments in their native tongue.',
-    duration: '0:25',
-    durationSeconds: 25,
+    duration: '1:31',
+    durationSeconds: 91,
     thumbnailColor: 'from-amber-500/90 to-amber-700/95',
     emoji: '🎒',
+    videoUrl: '/videos/episode2.mp4',
     vocab: [
       { word: 'Ìwé', translation: 'Book', phonetic: 'Ee-weh', tip: 'Any book, notebook, or written material used for reading and writing.' },
       { word: 'Kálà', translation: 'Pen / Pencil', phonetic: 'Kah-lah', tip: 'The instrument we use to write in our Ìwé.' },
@@ -73,14 +71,6 @@ const episodes: Episode[] = [
       { word: 'Bọ́dù', translation: 'Board / Chalkboard', phonetic: 'Baw-doo', tip: 'A loanword from English "board". Where the teacher writes lessons.' },
       { word: 'Kíláásì', translation: 'Classroom', phonetic: 'Kee-lah-ah-see', tip: 'Loanword from English "class". The physical or digital learning environment.' },
     ],
-    subtitles: [
-      { start: 0, end: 4, text: 'Morayo: Ẹ n lẹ o! Welcome back. Let\'s explore our classroom items today!' },
-      { start: 4, end: 8, text: 'We call them Orúkọ Àwọn Ǹkan Tó Wà Nínú Kíláásì.' },
-      { start: 8, end: 12, text: 'First is "Ìwé"—which means book. Repeat it with me: Ìwé!' },
-      { start: 12, end: 16, text: 'Next is "Kálà", which is a pen or pencil. We write in our Ìwé with a Kálà.' },
-      { start: 16, end: 20, text: 'We sit on an "Àga" (chair) and place our books on an "Àpótí" (desk).' },
-      { start: 20, end: 25, text: 'Excellent! Now look around your room and practice naming these items in Yorùbá.' }
-    ]
   }
 ];
 
@@ -88,45 +78,43 @@ export default function VideoSeries() {
   const [activeEpId, setActiveEpId] = useState<string>('episode-1');
   const activeEp = episodes.find((e) => e.id === activeEpId) || episodes[0];
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   // Video playback states
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(0);
+  const [duration, setDuration] = useState<number>(activeEp.durationSeconds);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(80);
   const [activeVocabIdx, setActiveVocabIdx] = useState<number | null>(null);
 
-  const playbackIntervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Clear playback loop on unmount
+  // Synchronize source loading when videoUrl changes
   useEffect(() => {
-    return () => {
-      if (playbackIntervalRef.current) clearInterval(playbackIntervalRef.current);
-    };
-  }, []);
-
-  // Control simulated playback timer
-  useEffect(() => {
-    if (isPlaying) {
-      playbackIntervalRef.current = setInterval(() => {
-        setCurrentTime((prev) => {
-          if (prev >= activeEp.durationSeconds) {
-            setIsPlaying(false);
-            if (playbackIntervalRef.current) clearInterval(playbackIntervalRef.current);
-            return activeEp.durationSeconds;
-          }
-          return prev + 1;
-        });
-      }, 1000);
-    } else {
-      if (playbackIntervalRef.current) {
-        clearInterval(playbackIntervalRef.current);
-      }
+    if (videoRef.current) {
+      videoRef.current.load();
     }
+  }, [activeEp.videoUrl]);
 
-    return () => {
-      if (playbackIntervalRef.current) clearInterval(playbackIntervalRef.current);
-    };
-  }, [isPlaying, activeEp.durationSeconds]);
+  // Synchronize playback state
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isPlaying) {
+      videoRef.current.play().catch((err) => {
+        console.log('Playback prevented: ', err);
+        setIsPlaying(false);
+      });
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isPlaying]);
+
+  // Synchronize volume and mute states
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+      videoRef.current.volume = volume / 100;
+    }
+  }, [isMuted, volume]);
 
   // Reset video state when active episode changes
   const selectEpisode = (epId: string) => {
@@ -134,40 +122,57 @@ export default function VideoSeries() {
     setIsPlaying(false);
     setCurrentTime(0);
     setActiveVocabIdx(null);
+    const newEp = episodes.find((e) => e.id === epId);
+    if (newEp) {
+      setDuration(newEp.durationSeconds);
+    }
   };
 
   const togglePlay = () => {
-    if (currentTime >= activeEp.durationSeconds) {
+    if (currentTime >= duration) {
       setCurrentTime(0);
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+      }
     }
     setIsPlaying(!isPlaying);
   };
 
   const handleProgressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = parseInt(e.target.value, 10);
+    const val = parseFloat(e.target.value);
     setCurrentTime(val);
-    if (val < activeEp.durationSeconds && isPlaying === false && val !== activeEp.durationSeconds) {
-      // Keep paused
-    } else if (val >= activeEp.durationSeconds) {
-      setIsPlaying(false);
+    if (videoRef.current) {
+      videoRef.current.currentTime = val;
+    }
+  };
+
+  const handleTimeUpdate = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    setCurrentTime(e.currentTarget.currentTime);
+  };
+
+  const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    setDuration(e.currentTarget.duration);
+  };
+
+  const handleEnded = () => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
     }
   };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
+    const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  // Find active subtitle
-  const activeSubtitle = activeEp.subtitles.find(
-    (sub) => currentTime >= sub.start && currentTime < sub.end
-  );
 
   return (
     <section className="py-16 md:py-[100px] bg-gray-50 border-t border-b border-gray-100/80" id="video-hub">
       <div className="max-w-[1200px] mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 mb-4">
@@ -183,10 +188,36 @@ export default function VideoSeries() {
 
         {/* Dual Column Layout: Video Player + Episode Selector */}
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 items-start mb-16">
-          
-          {/* Left: Interactive Simulated Video Player */}
+
+          {/* Left: Interactive Video Player */}
           <div className="flex flex-col gap-4">
-            <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-950 border border-gray-900 shadow-xl group">
+            <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-950 border border-green-600 shadow-sm group">
+              {/* HTML5 Video element */}
+              <video
+                ref={videoRef}
+                src={activeEp.videoUrl}
+                className="absolute inset-0 w-full h-full object-cover z-10 cursor-pointer"
+                playsInline
+                controls={false}
+                onTimeUpdate={handleTimeUpdate}
+                onLoadedMetadata={handleLoadedMetadata}
+                onEnded={handleEnded}
+                onClick={togglePlay}
+              />
+
+              {/* Floating header overlay */}
+              <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none select-none">
+                <div className="flex gap-2.5 items-center">
+                  <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping" />
+                  <span className="text-[10px] text-gray-300 font-semibold tracking-wider bg-gray-900/50 px-2 py-0.5 rounded backdrop-blur-xs uppercase">
+                    Lessons Stream
+                  </span>
+                </div>
+                <span className="text-xs text-gray-300 font-medium bg-gray-900/50 px-2.5 py-1 rounded backdrop-blur-xs">
+                  Tutor: Morayo A.
+                </span>
+              </div>
+
               {/* Thumbnail backdrop when not playing and time is 0 */}
               <AnimatePresence>
                 {(!isPlaying && currentTime === 0) && (
@@ -223,70 +254,18 @@ export default function VideoSeries() {
                 )}
               </AnimatePresence>
 
-              {/* Simulated active streaming backdrop */}
-              <div className="absolute inset-0 flex flex-col justify-between p-6 bg-radial from-gray-900/60 to-gray-950 select-none">
-                {/* Floating header */}
-                <div className="flex justify-between items-start z-10">
-                  <div className="flex gap-2.5 items-center">
-                    <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping" />
-                    <span className="text-[10px] text-gray-300 font-semibold tracking-wider bg-gray-900/50 px-2 py-0.5 rounded backdrop-blur-xs uppercase">
-                      Lessons Stream
-                    </span>
-                  </div>
-                  <span className="text-xs text-gray-300 font-medium bg-gray-900/50 px-2.5 py-1 rounded backdrop-blur-xs">
-                    Tutor: Morayo A.
-                  </span>
+              {/* Center Play Button Overlay when paused mid-video */}
+              {!isPlaying && currentTime > 0 && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-20 transition-all duration-300">
+                  <button
+                    onClick={togglePlay}
+                    className="w-16 h-16 rounded-full bg-white/95 text-green-700 flex items-center justify-center shadow-2xl hover:scale-105 hover:bg-white active:scale-95 transition-all duration-300 border-none cursor-pointer animate-fade-in"
+                  >
+                    <HugeiconsIcon icon={PlayIcon} size={24} className="ml-1 text-green-600" />
+                  </button>
                 </div>
+              )}
 
-                {/* Simulated Visual Content based on play head */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-gray-900">
-                  {isPlaying ? (
-                    <div className="flex flex-col items-center justify-center gap-4">
-                      {/* Audio visualizer peaks animation */}
-                      <div className="flex gap-1.5 items-end justify-center h-10 mb-2">
-                        {[...Array(8)].map((_, i) => (
-                          <motion.div
-                            key={i}
-                            animate={{ height: isPlaying ? [10, 36, 12, 40, 10][i % 5] : 8 }}
-                            transition={{ duration: 0.6 + i * 0.1, repeat: Infinity, ease: 'easeInOut', repeatType: 'reverse' }}
-                            className="w-1.5 rounded-full bg-green-500"
-                          />
-                        ))}
-                      </div>
-                      
-                      {/* Subtitles Overlay */}
-                      <div className="min-h-[64px] max-w-xl flex items-center justify-center">
-                        <AnimatePresence mode="wait">
-                          {activeSubtitle ? (
-                            <motion.p
-                              key={activeSubtitle.text}
-                              initial={{ opacity: 0, y: 8 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: -8 }}
-                              transition={{ duration: 0.25 }}
-                              className="font-heading text-base sm:text-xl md:text-2xl text-white font-medium drop-shadow-md text-center px-4"
-                            >
-                              {activeSubtitle.text}
-                            </motion.p>
-                          ) : (
-                            <p className="text-gray-400 text-sm sm:text-base italic">Stream loading...</p>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    </div>
-                  ) : (
-                    // Paused screen
-                    <div className="text-center">
-                      <HugeiconsIcon icon={ComputerIcon} size={48} className="text-gray-600 mb-3 animate-pulse" />
-                      <div className="text-gray-400 font-heading text-sm">Video Stream Paused</div>
-                      <div className="text-[11px] text-gray-500 mt-1">Press Play to resume learning</div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Subtitles floating above controls */}
-                <div className="z-10 w-full" />
-              </div>
 
               {/* Video Player Controls (Overlay at bottom) */}
               <div className="absolute bottom-0 left-0 right-0 p-4.5 bg-gradient-to-t from-gray-950 via-gray-950/85 to-transparent flex flex-col gap-3.5 z-20">
@@ -298,13 +277,14 @@ export default function VideoSeries() {
                   <input
                     type="range"
                     min="0"
-                    max={activeEp.durationSeconds}
+                    max={duration}
+                    step="0.1"
                     value={currentTime}
                     onChange={handleProgressChange}
                     className="flex-1 h-1 bg-gray-700 rounded-full appearance-none cursor-pointer accent-green-500 focus:outline-none focus:ring-0 [&::-webkit-slider-runnable-track]:bg-transparent [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green-500 [&::-webkit-slider-thumb]:appearance-none"
                   />
                   <span className="text-[11px] font-mono text-gray-400 select-none">
-                    {formatTime(activeEp.durationSeconds)}
+                    {formatTime(duration)}
                   </span>
                 </div>
 
@@ -326,7 +306,13 @@ export default function VideoSeries() {
 
                     {/* Restart */}
                     <button
-                      onClick={() => { setCurrentTime(0); setIsPlaying(true); }}
+                      onClick={() => {
+                        setCurrentTime(0);
+                        if (videoRef.current) {
+                          videoRef.current.currentTime = 0;
+                        }
+                        setIsPlaying(true);
+                      }}
                       className="p-1 bg-transparent border-none text-gray-400 hover:text-white transition-colors cursor-pointer"
                       aria-label="Restart Video"
                     >
@@ -368,10 +354,30 @@ export default function VideoSeries() {
               </div>
             </div>
 
-            {/* Quick Helper Hint */}
-            <div className="flex gap-2 items-center p-3.5 bg-green-50 border border-green-100 rounded-2xl text-[12px] text-green-800">
-              <HugeiconsIcon icon={BookOpen01Icon} size={16} className="text-green-600 shrink-0" />
-              <span><strong>Interactive subtitles:</strong> The text displayed inside the video represents Morayo&apos;s speech. Watch the progress bar to follow the lesson flow!</span>
+            {/* Social Link Buttons */}
+            <div className="flex flex-row gap-3 items-center mt-6">
+              <Button asChild variant="outline" className="flex-1 sm:flex-initial rounded-full border-gray-100 text-gray-700 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-300  text-sm py-5 px-6 cursor-pointer group">
+                <Link
+                  href="https://www.facebook.com/p/Native-Academy-61578914925330/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <HugeiconsIcon icon={FacebookIcon} size={20} className="text-blue-600 group-hover:scale-110 transition-transform duration-300" />
+                  <span>Watch more</span>
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="flex-1 sm:flex-initial rounded-full border-gray-100 text-gray-700 hover:text-pink-600 hover:border-pink-200 hover:bg-pink-50/30 transition-all duration-300  text-sm py-5 px-6 cursor-pointer group">
+                <a
+                  href="https://www.instagram.com/reel/DNvaD4wYkUf/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <HugeiconsIcon icon={InstagramIcon} size={20} className="text-pink-600 group-hover:scale-110 transition-transform duration-300" />
+                  <span>Watch more</span>
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -388,11 +394,10 @@ export default function VideoSeries() {
                   <button
                     key={ep.id}
                     onClick={() => selectEpisode(ep.id)}
-                    className={`p-4.5 rounded-2xl border text-left cursor-pointer transition-all duration-300 w-full bg-white flex items-start gap-4 ${
-                      isActive
-                        ? 'border-green-600 shadow-[0_10px_25px_-8px_rgba(0,123,55,0.06)] scale-[1.01]'
-                        : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50/50'
-                    }`}
+                    className={`p-4.5 rounded-2xl border text-left cursor-pointer transition-all duration-300 w-full bg-white flex items-start gap-4 ${isActive
+                      ? 'border-green-600 shadow-[0_10px_25px_-8px_rgba(0,123,55,0.06)] scale-[1.01]'
+                      : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50/50'
+                      }`}
                   >
                     <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${ep.thumbnailColor} text-white flex items-center justify-center font-heading font-semibold shrink-0 text-sm shadow-sm`}>
                       EP{ep.episodeNumber}
@@ -400,9 +405,8 @@ export default function VideoSeries() {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2 mb-1">
-                        <h4 className={`font-heading text-[14px] font-bold truncate ${
-                          isActive ? 'text-green-700' : 'text-gray-900'
-                        }`}>
+                        <h4 className={`font-heading text-[14px] font-bold truncate ${isActive ? 'text-green-700' : 'text-gray-900'
+                          }`}>
                           {ep.title}
                         </h4>
                         <div className="flex gap-1 items-center text-[10.5px] text-gray-400 shrink-0">
@@ -452,11 +456,10 @@ export default function VideoSeries() {
                 <div
                   key={idx}
                   onClick={() => setActiveVocabIdx(isSelected ? null : idx)}
-                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 text-left flex flex-col gap-2 ${
-                    isSelected
-                      ? 'bg-green-50/50 border-green-300 shadow-sm'
-                      : 'bg-white border-gray-100 hover:border-gray-200'
-                  }`}
+                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 text-left flex flex-col gap-2 ${isSelected
+                    ? 'bg-green-50/50 border-green-300 shadow-sm'
+                    : 'bg-white border-gray-100 hover:border-gray-200'
+                    }`}
                 >
                   <div className="flex justify-between items-start gap-2">
                     <span className="font-heading text-base font-bold text-gray-950 tracking-tight">
@@ -466,7 +469,7 @@ export default function VideoSeries() {
                       {item.phonetic}
                     </span>
                   </div>
-                  
+
                   <div className="text-[13px] text-gray-600 font-medium">
                     {item.translation}
                   </div>
