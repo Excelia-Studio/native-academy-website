@@ -53,7 +53,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[1000] py-3.5 transition-all duration-300 ease-out ${menuOpen || scrolled
-          ? 'bg-white border-b border-gray-100 py-2.5'
+          ? 'bg-white border-b border-gray-50 py-2.5'
           : 'bg-transparent'
           }`}
       >
