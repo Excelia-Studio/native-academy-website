@@ -191,7 +191,7 @@ export default function VideoSeries() {
 
           {/* Left: Interactive Video Player */}
           <div className="flex flex-col gap-4">
-            <div className="relative aspect-video min-h-[280px] rounded-3xl overflow-hidden bg-gray-950 border border-green-600 shadow-sm group">
+            <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-950 border border-green-600 shadow-sm group max-w-full">
               {/* HTML5 Video element */}
               <video
                 ref={videoRef}
