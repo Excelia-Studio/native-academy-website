@@ -139,7 +139,7 @@ export default function QuizSection() {
 
   const handleSubmitAnswer = () => {
     if (!selectedAnswer || isAnswerSubmitted) return;
-    
+
     setIsAnswerSubmitted(true);
     if (selectedAnswer === currentQuestion?.answer) {
       setScore((prev) => prev + 1);
@@ -148,7 +148,7 @@ export default function QuizSection() {
 
   const handleNextQuestion = () => {
     if (!activeQuiz) return;
-    
+
     const nextIdx = currentQuestionIdx + 1;
     if (nextIdx < activeQuiz.questions.length) {
       setCurrentQuestionIdx(nextIdx);
@@ -181,13 +181,13 @@ export default function QuizSection() {
   return (
     <section className="py-16 md:py-[100px] bg-white overflow-hidden scroll-mt-20" id="quizzes">
       <div className="max-w-[1200px] mx-auto px-6">
-        
+
         {/* State 1: Quiz Selection Interface */}
         {!selectedQuizId && (
           <div>
             {/* Header */}
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-amber-50 text-amber-700 border border-amber-100 mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-amber-50 text-amber-700 border border-amber-100 mb-4">
                 <HugeiconsIcon icon={SparklesIcon} size={12} className="text-amber-500" />
                 Practice Hub
               </span>
@@ -209,13 +209,11 @@ export default function QuizSection() {
                   className={`p-6 sm:p-8 rounded-[24px] border ${quiz.borderClass} ${quiz.bgClass} flex flex-col items-start gap-4 text-left relative overflow-hidden`}
                 >
                   {/* Backdrop glowing effect */}
-                  <div className={`absolute top-0 right-0 w-24 h-24 rounded-full filter blur-2xl opacity-20 pointer-events-none -z-10 ${
-                    quiz.accentColor === 'green' ? 'bg-green-600' : 'bg-amber-500'
-                  }`} />
+                  <div className={`absolute top-0 right-0 w-24 h-24 rounded-full filter blur-2xl opacity-20 pointer-events-none -z-10 ${quiz.accentColor === 'green' ? 'bg-green-600' : 'bg-amber-500'
+                    }`} />
 
-                  <span className={`inline-block font-heading text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
-                    quiz.accentColor === 'green' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
-                  }`}>
+                  <span className={`inline-block font-heading text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${quiz.accentColor === 'green' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'
+                    }`}>
                     {quiz.badge}
                   </span>
 
@@ -235,11 +233,10 @@ export default function QuizSection() {
 
                   <Button
                     asChild
-                    className={`mt-auto w-full rounded-full py-3 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer transition-all duration-300 ${
-                      quiz.accentColor === 'green'
+                    className={`mt-auto w-full rounded-full py-3 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer transition-all duration-300 ${quiz.accentColor === 'green'
                         ? 'bg-green-600 hover:bg-green-700 text-white'
                         : 'bg-amber-500 hover:bg-amber-600 text-white'
-                    }`}
+                      }`}
                   >
                     <a
                       href={quiz.id === 'greetings' ? 'https://wayground.com/join?gc=17731948' : 'https://wayground.com/join?gc=56021356'}
@@ -276,9 +273,8 @@ export default function QuizSection() {
             {/* Progress line */}
             <div className="w-full bg-gray-200 h-1 rounded-full overflow-hidden mb-8">
               <div
-                className={`h-full rounded-full transition-all duration-500 ${
-                  activeQuiz.accentColor === 'green' ? 'bg-green-600' : 'bg-amber-500'
-                }`}
+                className={`h-full rounded-full transition-all duration-500 ${activeQuiz.accentColor === 'green' ? 'bg-green-600' : 'bg-amber-500'
+                  }`}
                 style={{ width: `${((currentQuestionIdx + 1) / activeQuiz.questions.length) * 100}%` }}
               />
             </div>
@@ -293,7 +289,7 @@ export default function QuizSection() {
               {currentQuestion.choices.map((choice) => {
                 const isSelected = selectedAnswer === choice;
                 const isCorrect = choice === currentQuestion.answer;
-                
+
                 let btnStyle = 'border-gray-100 hover:border-gray-300 bg-white';
                 if (isAnswerSubmitted) {
                   if (isCorrect) {
@@ -350,22 +346,20 @@ export default function QuizSection() {
                 <Button
                   onClick={handleSubmitAnswer}
                   disabled={!selectedAnswer}
-                  className={`rounded-full px-6 py-2.5 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer ${
-                    activeQuiz.accentColor === 'green'
+                  className={`rounded-full px-6 py-2.5 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer ${activeQuiz.accentColor === 'green'
                       ? 'bg-green-600 hover:bg-green-700 text-white disabled:bg-gray-200 disabled:text-gray-400'
                       : 'bg-amber-500 hover:bg-amber-600 text-white disabled:bg-gray-200 disabled:text-gray-400'
-                  }`}
+                    }`}
                 >
                   Submit Answer
                 </Button>
               ) : (
                 <Button
                   onClick={handleNextQuestion}
-                  className={`rounded-full px-6 py-2.5 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer flex items-center gap-1 ${
-                    activeQuiz.accentColor === 'green'
+                  className={`rounded-full px-6 py-2.5 h-auto font-heading text-xs font-semibold shadow-none border-none cursor-pointer flex items-center gap-1 ${activeQuiz.accentColor === 'green'
                       ? 'bg-green-600 hover:bg-green-700 text-white'
                       : 'bg-amber-500 hover:bg-amber-600 text-white'
-                  }`}
+                    }`}
                 >
                   <span>
                     {currentQuestionIdx + 1 === activeQuiz.questions.length ? 'Finish Quiz' : 'Next Question'}
@@ -390,7 +384,7 @@ export default function QuizSection() {
             </div>
 
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-2">Quiz Finished</span>
-            
+
             <h3 className="font-heading text-xl sm:text-2xl text-gray-950 font-bold mb-3">
               {getScoreFeedback((score / activeQuiz.questions.length) * 100).title}
             </h3>

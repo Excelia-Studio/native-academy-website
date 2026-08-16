@@ -41,7 +41,7 @@ const foundations = [
   {
     badge: 'Our Mission',
     icon: Target02Icon,
-    title: 'To Connect & Empower',
+    title: 'Heritage Preservation',
     desc: 'To become a household name for learning native African languages and a bridge for the preservation of African languages for people of African descent in foreign countries.',
     colorClass: 'text-green-600 bg-green-50 border-green-150',
     hoverBg: 'hover:bg-green-50/40 hover:border-green-300',
@@ -61,7 +61,7 @@ const foundations = [
   {
     badge: 'Our Core Value',
     icon: Shield01Icon,
-    title: 'Heritage Preservation',
+    title: 'Core Value',
     desc: "Direct preservation of African languages' heritage by providing deep immersion and high-quality native education.",
     colorClass: 'text-green-700 bg-green-50 border-green-150',
     hoverBg: 'hover:bg-green-50/40 hover:border-green-300',
@@ -83,7 +83,7 @@ export default function AboutFoundation() {
         <div className="flex flex-col items-center max-w-xl mx-auto mb-16">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-tight uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-4"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-tight uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-4"
           >
             Our Foundation
           </motion.span>

@@ -40,7 +40,7 @@ export default function FooterCTA() {
                 className="inline-flex items-center justify-start gap-2 self-start px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-md text-emerald-300 text-xs font-semibold tracking-wide uppercase"
               >
                 <HugeiconsIcon icon={SparklesIcon} size={15} className="text-emerald-400 animate-pulse" />
-                <span>Join 50+ Diaspora Families Today</span>
+                <span>Join Other Diaspora Families Today</span>
               </motion.div>
 
               {/* Title */}
@@ -97,7 +97,7 @@ export default function FooterCTA() {
                         <HugeiconsIcon key={i} icon={StarIcon} size={14} className="fill-amber-400" />
                       ))}
                     </div>
-                    <span className="text-xs text-gray-300 font-medium">4.9/5 from 50+ parents</span>
+                    <span className="text-xs text-gray-300 font-medium">Review from parents</span>
                   </div>
                 </div>
 

@@ -59,7 +59,7 @@ export default function MediaHero() {
         <div className="flex flex-col items-start">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none"
           >
             <HugeiconsIcon icon={CameraVideoIcon} size={12} className="text-green-600 animate-pulse" />
             Èdè Aládùn Series
@@ -136,9 +136,9 @@ export default function MediaHero() {
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
 
               {/* Play button overlay */}
-              <div className="w-14 h-14 rounded-full bg-white/95 text-green-700 flex items-center justify-center shadow-lg group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 z-10">
+              {/* <div className="w-14 h-14 rounded-full bg-white/95 text-green-700 flex items-center justify-center shadow-lg group-hover:bg-green-600 group-hover:text-white transition-colors duration-300 z-10">
                 <HugeiconsIcon icon={PlayIcon} size={22} className="ml-1" />
-              </div>
+              </div> */}
 
               {/* Episode pill */}
               <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 font-heading text-[10px] tracking-wide uppercase rounded-full bg-green-600/90 text-white font-bold backdrop-blur-xs">

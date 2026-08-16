@@ -7,11 +7,13 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import {
   FacebookIcon,
   InstagramIcon,
+  WhatsappIcon
 } from '@hugeicons/core-free-icons';
 
 const socials = [
   { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/p/Native-Academy-61578914925330/' },
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/reel/DNvaD4wYkUf/' },
+  { icon: WhatsappIcon, label: 'Whatsapp', href: 'https://whatsapp.com/channel/0029VaDPn1tH5JM3M6v7iM0L' },
 ];
 
 export default function Footer() {
@@ -64,9 +66,9 @@ export default function Footer() {
                 title: 'Programs',
                 links: [
                   { label: 'Yorùbá Classes', href: '/services#yoruba-academy' },
-                  { label: 'Age 3–6 Track', href: '/services#yoruba-academy' },
-                  { label: 'Age 7–12 Track', href: '/services#yoruba-academy' },
-                  { label: 'Teen & Young Adult', href: '/services#yoruba-academy' },
+                  // { label: 'Age 3–6 Track', href: '/services#yoruba-academy' },
+                  // { label: 'Age 7–12 Track', href: '/services#yoruba-academy' },
+                  // { label: 'Teen & Young Adult', href: '/services#yoruba-academy' },
                 ],
               },
               {
@@ -88,11 +90,11 @@ export default function Footer() {
               },
             ].map((col) => (
               <div key={col.title} className="flex flex-col gap-2">
-                <h3 className="font-heading text-[13px] text-gray-400 uppercase tracking-[0.06em] mb-1">
+                <h3 className="font-heading text-[15px] font-bold text-white uppercase tracking-[0.06em] mb-1">
                   {col.title}
                 </h3>
                 {col.links.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] no-underline">
+                  <Link key={link.label} href={link.href} className="text-sm text-gray-500 hover:text-green-400 transition-colors leading-[1.5] underline">
                     {link.label}
                   </Link>
                 ))}

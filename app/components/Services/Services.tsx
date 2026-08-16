@@ -68,7 +68,7 @@ export default function Services() {
         <div className="flex flex-col gap-4 items-start text-left">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading font-semibold text-[12px] tracking-[0.06em] uppercase rounded-full bg-amber-50 border border-amber-200 text-amber-600 shadow-none"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading font-semibold text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none"
           >
             Our Flagship
           </motion.span>
@@ -78,7 +78,7 @@ export default function Services() {
           >
             Live Online <span className="text-green-600">Yorùbá</span> Classes
           </motion.h2>
-          <motion.p variants={itemVariants} className="font-heading text-sm sm:text-base text-amber-500">
+          <motion.p variants={itemVariants} className="font-heading text-lg text-amber-500">
             Ages 3 to 25
           </motion.p>
           <motion.p variants={itemVariants} className="text-sm sm:text-base leading-[1.7] text-gray-500 max-w-[440px]">

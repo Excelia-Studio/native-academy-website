@@ -59,7 +59,7 @@ export default function ServicesHero() {
         <div className="flex flex-col items-start">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-amber-50 text-amber-700 border border-amber-200 shadow-none"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-amber-50 text-amber-700 border border-amber-200 shadow-none"
           >
             <HugeiconsIcon icon={SparklesIcon} size={12} className="text-amber-500" />
             Our Offerings
@@ -86,7 +86,7 @@ export default function ServicesHero() {
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
                 <a href="#yoruba-academy" id="hero-btn-primary">
-                  Explore yorùbá academy
+                  Explore our live classes
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
               </Button>
@@ -106,7 +106,7 @@ export default function ServicesHero() {
               <span className="text-[13px] text-gray-400">Tailored Curriculum</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-heading text-lg text-gray-900 font-bold">Small Cohorts</span>
+              <span className="font-heading text-lg text-gray-900 font-bold">Small Cohorts(Max 6)</span>
               <span className="text-[13px] text-gray-400">Individual Attention</span>
             </div>
           </motion.div>

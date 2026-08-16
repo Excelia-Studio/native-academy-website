@@ -52,7 +52,7 @@ export default function AboutHero() {
         <div className="flex flex-col items-start">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-tight uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-tight uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none"
           >
             The Origin Story
           </motion.span>

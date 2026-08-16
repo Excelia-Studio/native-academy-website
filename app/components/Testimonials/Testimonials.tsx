@@ -9,14 +9,14 @@ import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 const testimonials = [
   {
     quote: "Living in the UK, I was deeply worried my 8-year-old would lose our language entirely. After just a few weeks with Native Academy's live classes, he is greeting family members confidently in Yorùbá. It's an invaluable gift.",
-    name: 'Oluwaseun A.',
-    location: 'London, UK',
+    name: 'Oluwaseun',
+    location: 'United Kingdom',
     tag: 'Invaluable gift',
   },
   {
     quote: "My teenage daughter actually looks forward to her weekend classes. The interaction with other diaspora kids makes it feel less like regular school and more like a cultural club. Highly recommend!",
-    name: 'Tunde W.',
-    location: 'Houston, USA',
+    name: 'Tunde',
+    location: 'United States',
     tag: 'Engaging and deeply interactive',
   },
 ];
@@ -57,11 +57,11 @@ export default function Testimonials() {
         viewport={{ once: true, margin: '-50px' }}
       >
         <motion.div variants={itemVariants} className="text-left max-w-[600px] mb-12">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100">
             Testimonials
           </span>
           <h2 className="font-heading-two text-[26px] sm:text-[32px] md:text-[38px] lg:text-[46px] text-gray-950 mt-4 mb-3.5">
-            Stories of <span className="text-green-600">Pride</span>, Connection, and Confidence
+            Stories of <span className="text-green-600">Pride</span>, Connection,and Confidence
           </h2>
           <p className="text-sm sm:text-base leading-[1.7] text-gray-500">
             See how diaspora parents are experiencing the ultimate peace of mind knowing

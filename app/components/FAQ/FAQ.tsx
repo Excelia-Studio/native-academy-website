@@ -59,7 +59,7 @@ export default function FAQ() {
         viewport={{ once: true, margin: '-50px' }}
       >
         <motion.div variants={itemVariants} className="flex flex-col gap-4 items-start text-left lg:sticky lg:top-28">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100">
             FAQ
           </span>
           <h2 className="font-heading-two text-[26px] sm:text-[32px] md:text-[36px] lg:text-[40px] text-gray-950 leading-[1.15]">

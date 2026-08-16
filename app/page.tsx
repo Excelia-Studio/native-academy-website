@@ -8,10 +8,12 @@ import WhyTrust from "./components/WhyTrust/WhyTrust";
 import Testimonials from "./components/Testimonials/Testimonials";
 import FAQ from "./components/FAQ/FAQ";
 import Footer from "./components/Footer/Footer";
+import WelcomeVoice from "./components/WelcomeVoice/WelcomeVoice";
 
 export default function Home() {
   return (
     <>
+      <WelcomeVoice />
       <ScrollProgress />
       <Navbar />
       <main>

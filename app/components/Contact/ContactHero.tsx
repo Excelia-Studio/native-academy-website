@@ -43,7 +43,7 @@ export default function ContactHero() {
       >
         <motion.span
           variants={itemVariants}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-6"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-6"
         >
           <HugeiconsIcon icon={SparklesIcon} size={12} className="text-green-500 animate-pulse" />
           Enrollment & Inquiries

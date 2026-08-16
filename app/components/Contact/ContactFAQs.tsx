@@ -30,10 +30,10 @@ export default function ContactFAQs() {
   return (
     <section className="py-12 md:py-16 bg-white overflow-hidden" id="contact-faqs">
       <div className="max-w-[800px] mx-auto px-6">
-        
+
         {/* Header */}
         <div className="text-center mb-10 flex flex-col items-center">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 shadow-none mb-4">
             Enrollment Help
           </span>
           <h2 className="font-heading-two text-[26px] sm:text-[32px] text-gray-950 leading-tight">
@@ -49,9 +49,8 @@ export default function ContactFAQs() {
               <motion.div
                 key={i}
                 whileHover={{ y: -1 }}
-                className={`rounded-2xl bg-gray-50 border overflow-hidden transition-all duration-300 ${
-                  isOpen ? 'border-green-400 ring-1 ring-green-400 bg-white' : 'border-gray-100 hover:border-gray-200'
-                }`}
+                className={`rounded-2xl bg-gray-50 border overflow-hidden transition-all duration-300 ${isOpen ? 'border-green-400 ring-1 ring-green-400 bg-white' : 'border-gray-100 hover:border-gray-200'
+                  }`}
               >
                 <button
                   className="w-full flex items-center justify-between gap-4 p-5 bg-transparent border-none cursor-pointer text-left"
@@ -63,9 +62,8 @@ export default function ContactFAQs() {
                     {faq.q}
                   </span>
                   <motion.div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                      isOpen ? 'bg-green-600 text-white' : 'bg-white border border-gray-200 text-gray-500'
-                    }`}
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen ? 'bg-green-600 text-white' : 'bg-white border border-gray-200 text-gray-500'
+                      }`}
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 25 }}
                   >

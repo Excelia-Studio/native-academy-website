@@ -128,11 +128,11 @@ export default function YorubaAcademy() {
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 lg:mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 mb-4">
             Flagship Program
           </span>
           <h2 className="font-heading-two text-[30px] md:text-[44px] text-gray-950 leading-[1.1] mb-5">
-            Live Online <span className="text-green-600">Yorùbá Academy</span>
+            Live Online <span className="text-green-600">Yorùbá Classes</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
             Our specialized curriculum takes kids and teens from zero vocabulary to confident, fluid conversations. We do not just teach translations; we celebrate culture and identity.
@@ -280,7 +280,7 @@ export default function YorubaAcademy() {
           {/* Subtle background blob */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full bg-green-700/10 blur-3xl pointer-events-none" />
 
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 font-heading text-[10px] tracking-widest uppercase rounded-full bg-green-950 text-green-400 border border-green-900 font-bold mb-5">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 font-heading text-[12px] tracking-widest uppercase rounded-full bg-green-950 text-green-400 border border-green-900 font-bold mb-5">
             Limited Spots Available
           </span>
 
@@ -296,7 +296,7 @@ export default function YorubaAcademy() {
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }} className="w-full sm:w-auto">
               <Button asChild size="lg" className="w-full sm:w-auto px-8 bg-green-600 hover:bg-green-700 text-white font-medium rounded-full py-3.5 h-auto transition-all shadow-md shadow-green-900/10">
                 <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="yoruba-cta-enroll" target='_blank' rel='noopener noreferrer'>
-                  Enroll in yoruba academy
+                  Enroll in yoruba live classes
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
               </Button>

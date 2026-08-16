@@ -56,7 +56,7 @@ const episodes: Episode[] = [
   {
     id: 'episode-2',
     episodeNumber: 2,
-    title: 'Orúkọ Àwọn Ǹkan Tó Wà Nínú Kíláásì (Classroom items)',
+    title: 'Àwọn Nǹkan Nínú Kíláásì(Classroom items)',
     description: 'Empowering kids to label and speak about their everyday learning environments in their native tongue.',
     duration: '1:31',
     durationSeconds: 91,
@@ -175,7 +175,7 @@ export default function VideoSeries() {
 
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100 mb-4">
             Video Course
           </span>
           <h2 className="font-heading-two text-[30px] md:text-[44px] text-gray-950 leading-[1.1] mb-5">
@@ -191,7 +191,7 @@ export default function VideoSeries() {
 
           {/* Left: Interactive Video Player */}
           <div className="flex flex-col gap-4">
-            <div className="relative aspect-video rounded-3xl overflow-hidden bg-gray-950 border border-green-600 shadow-sm group">
+            <div className="relative aspect-video min-h-[280px] rounded-3xl overflow-hidden bg-gray-950 border border-green-600 shadow-sm group">
               {/* HTML5 Video element */}
               <video
                 ref={videoRef}
@@ -225,7 +225,7 @@ export default function VideoSeries() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className={`absolute inset-0 bg-gradient-to-br ${activeEp.thumbnailColor} flex flex-col items-center justify-center p-6 text-center z-30`}
+                    className={`absolute inset-0 bg-gradient-to-br ${activeEp.thumbnailColor} flex flex-col items-center justify-center px-6 pt-6 pb-24 text-center z-30`}
                   >
                     {/* Visual pattern rings */}
                     <div className="absolute inset-0 opacity-10 flex items-center justify-center pointer-events-none">
@@ -233,11 +233,11 @@ export default function VideoSeries() {
                       <div className="w-[60%] aspect-square border border-dashed border-white rounded-full animate-[spin_20s_linear_infinite_reverse]" />
                     </div>
 
-                    <span className="text-6xl mb-4 select-none drop-shadow-md">{activeEp.emoji}</span>
+                    <span className="text-2xl mb-4 select-none drop-shadow-md">{activeEp.emoji}</span>
                     <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-green-100 bg-white/10 px-3 py-1 rounded-full mb-3 backdrop-blur-xs">
                       Episode {activeEp.episodeNumber}
                     </span>
-                    <h3 className="font-heading text-xl sm:text-3xl text-white font-semibold max-w-lg mb-2">
+                    <h3 className="font-heading text-xl sm:text-2xl text-white font-semibold max-w-lg mb-2">
                       {activeEp.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-green-100/80 max-w-sm mb-6">
@@ -246,9 +246,9 @@ export default function VideoSeries() {
 
                     <button
                       onClick={togglePlay}
-                      className="w-16 h-16 rounded-full bg-white text-green-700 flex items-center justify-center shadow-2xl hover:scale-105 hover:bg-green-50 active:scale-95 transition-all duration-300 border-none cursor-pointer"
+                      className="w-12 h-12 rounded-full bg-white text-green-700 flex items-center justify-center shadow-2xl hover:scale-105 hover:bg-green-50 active:scale-95 transition-all duration-300 border-none cursor-pointer"
                     >
-                      <HugeiconsIcon icon={PlayIcon} size={24} className="ml-1 text-green-600" />
+                      <HugeiconsIcon icon={PlayIcon} size={20} className="ml-1 text-green-600" />
                     </button>
                   </motion.div>
                 )}
@@ -259,7 +259,7 @@ export default function VideoSeries() {
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-20 transition-all duration-300">
                   <button
                     onClick={togglePlay}
-                    className="w-16 h-16 rounded-full bg-white/95 text-green-700 flex items-center justify-center shadow-2xl hover:scale-105 hover:bg-white active:scale-95 transition-all duration-300 border-none cursor-pointer animate-fade-in"
+                    className="w-16 h-16 rounded-full bg-white text-green-700 flex items-center justify-center shadow-2xl hover:scale-105 hover:bg-green-50 active:scale-95 transition-all duration-300 border-none cursor-pointer"
                   >
                     <HugeiconsIcon icon={PlayIcon} size={24} className="ml-1 text-green-600" />
                   </button>

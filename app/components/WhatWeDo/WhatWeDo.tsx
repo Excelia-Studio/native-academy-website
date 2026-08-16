@@ -43,7 +43,7 @@ export default function WhatWeDo() {
         <div className="flex flex-col gap-6 items-start">
           <motion.span
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[12px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 font-heading text-[15px] tracking-[0.06em] uppercase rounded-full bg-green-50 text-green-700 border border-green-100"
           >
             What We Do
           </motion.span>
@@ -109,7 +109,7 @@ export default function WhatWeDo() {
         >
           <div className="overflow-hidden rounded-[24px] shadow-lg shadow-black/5 group">
             <Image
-              src="/images/solution.webp"
+              src="/images/afri-child.jpg"
               alt="Children learning together"
               width={800}
               height={800}
