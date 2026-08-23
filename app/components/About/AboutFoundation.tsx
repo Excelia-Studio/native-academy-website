@@ -59,10 +59,15 @@ const foundations = [
     border: "border-amber-100"
   },
   {
-    badge: 'Our Core Value',
+    badge: 'Our Values',
     icon: Shield01Icon,
-    title: 'Core Value',
-    desc: "Direct preservation of African languages' heritage by providing deep immersion and high-quality native education.",
+    title: 'Our Values',
+    desc: '',
+    values: [
+      { name: 'Excellence', text: 'Delivering high-quality language teaching that inspires every learner.' },
+      { name: 'Knowledge', text: 'Helping learners speak fluently and connect with their roots.' },
+      { name: 'Responsibility', text: 'Protecting African languages and heritage for future generations.' },
+    ],
     colorClass: 'text-green-700 bg-green-50 border-green-150',
     hoverBg: 'hover:bg-green-50/40 hover:border-green-300',
     iconColor: 'text-green-600 bg-green-50 border-green-100',
@@ -131,14 +136,24 @@ export default function AboutFoundation() {
                   <h3 className="font-heading text-lg sm:text-xl text-gray-950 mb-3 group-hover:text-green-800 transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-sm sm:text-[15px] leading-[1.6]">
-                    {item.desc}
-                  </p>
+                  {'values' in item && item.values ? (
+                    <ul className="space-y-3 mt-1">
+                      {item.values.map((v, i) => (
+                        <li key={i} className="text-gray-500 text-sm sm:text-[15px] leading-[1.6]">
+                          <span className="font-heading text-gray-900">{v.name}:</span>{' '}
+                          {v.text}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-gray-500 text-sm sm:text-[15px] leading-[1.6]">
+                      {item.desc}
+                    </p>
+                  )}
                 </div>
 
                 <div className="mt-8 pt-5 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400 font-heading">
                   <span>Native Academy</span>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-green-600 font-semibold">Learn more &rarr;</span>
                 </div>
               </motion.div>
             );

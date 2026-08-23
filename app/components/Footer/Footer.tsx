@@ -13,7 +13,7 @@ import {
 const socials = [
   { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/p/Native-Academy-61578914925330/' },
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/reel/DNvaD4wYkUf/' },
-  { icon: WhatsappIcon, label: 'Whatsapp', href: 'https://whatsapp.com/channel/0029VaDPn1tH5JM3M6v7iM0L' },
+  { icon: WhatsappIcon, label: 'Whatsapp', href: 'https://whatsapp.com/channel/0029VaydlXx1NCrUlQ8elb2O' },
 ];
 
 export default function Footer() {

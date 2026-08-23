@@ -147,7 +147,7 @@ export default function ContactDetails() {
             </div>
             <div className="mt-8 pt-4 border-t border-gray-50">
               <a
-                href="https://whatsapp.com/channel/0029VaDPn1tH5JM3M6v7iM0L" // Standard fallback channel link format or wa.me redirect, but since we just have details we direct to standard WA
+                href="https://whatsapp.com/channel/0029VaydlXx1NCrUlQ8elb2O" // Standard fallback channel link format or wa.me redirect, but since we just have details we direct to standard WA
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-heading text-sm text-green-600 font-semibold no-underline"
@@ -189,7 +189,7 @@ export default function ContactDetails() {
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="https://whatsapp.com/channel/0029VaDPn1tH5JM3M6v7iM0L"
+              href="https://whatsapp.com/channel/0029VaydlXx1NCrUlQ8elb2O"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-100 rounded-full text-sm font-semibold text-gray-600 hover:text-green-600 hover:border-green-200 shadow-xs no-underline"
