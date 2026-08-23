@@ -140,8 +140,8 @@ export default function ServicesHero() {
             </p>
 
             <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-              <span className="text-[12px] text-gray-400">Next Cohort: <strong className="text-gray-700">Aug 1st</strong></span>
-              <a href="#yoruba-academy" className="text-sm font-semibold text-green-600 hover:text-green-700 inline-flex items-center gap-1 transition-colors no-underline">
+              <span className="text-[12px] text-gray-400">Next Cohort: <strong className="text-gray-700">Ongoing</strong></span>
+              <a href="#yoruba-curriculum" className="text-sm font-semibold text-green-600 hover:text-green-700 inline-flex items-center gap-1 transition-colors no-underline">
                 Explore Curriculum <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
               </a>
             </div>

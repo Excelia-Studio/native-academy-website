@@ -14,58 +14,54 @@ import {
   CheckmarkCircle02Icon,
 } from '@hugeicons/core-free-icons';
 
-const tracks = [
+
+
+const curriculumLevels = [
   {
-    id: 'irawo',
-    title: 'Ìràwọ̀ (Little Stars)',
-    age: 'Ages 3 to 6',
-    tagline: 'Play-based immersive learning for early learners.',
-    description: 'We believe early exposure is key to natural accent acquisition. In this track, children learn through interactive play, colorful animations, nursery rhymes, and basic vocabulary cards.',
-    curriculum: [
-      'Interactive Greetings (Ìkíni)',
-      'Numbers 1–10 & Basic Colors',
-      'Animals, Fruits & Everyday Objects',
-      'Traditional Children Songs & Rhymes'
+    id: 'level-1',
+    title: 'Level 1',
+    subtitle: 'First Words & Proud Moments',
+    tagline: 'Building confident first connections with Yorùbá.',
+    description: 'Watch your child light up as they master their first Yorùbá words and phrases — from greeting grandma with pride to naming the world around them through songs and play.',
+    items: [
+      { label: 'Say Hello to Grandma:', text: 'Master traditional greetings (Ìkíni) so kids can proudly greet elders with confidence the next time they call or visit home.' },
+      { label: 'Identify Their World:', text: 'Name classroom items (Gègé, Tàbìlì) and everyday household objects with ease.' },
+      { label: 'Sing & Learn:', text: 'Master body parts (Orí, Èjìká) and action words through interactive songs and games.' },
     ],
     accentColor: 'green',
     bgClass: 'bg-green-50/30 border-green-200/40',
-    textClass: 'text-green-700',
-    badgeClass: 'bg-green-100/50 text-green-800'
+    badgeClass: 'bg-green-100/50 text-green-800',
   },
   {
-    id: 'akanse',
-    title: 'Àkànṣe (Special Leaders)',
-    age: 'Ages 7 to 12',
-    tagline: 'Building confident conversationalists and storytellers.',
-    description: 'At this stage, we focus on grammar construction, simple sentence building, and cultural values. We introduce storytelling (Àlọ́) and structured games to build vocabulary in context.',
-    curriculum: [
-      'Introducing Oneself & Family Members',
-      'Everyday Sentence Formations',
-      'Yorùbá Folk Tales & Cultural Ethics (Ìwà)',
-      'Basic Command Verbs & Questions'
+    id: 'level-2',
+    title: 'Level 2',
+    subtitle: 'Real Conversations & Market Play',
+    tagline: 'From single words to full sentences and real-life scenarios.',
+    description: 'Children graduate from one-word replies to expressing feelings, bargaining at the market, and navigating everyday routines — all in Yorùbá.',
+    items: [
+      { label: 'Full Sentence Fluency:', text: 'Move past one-word replies to express feelings (Inú mi ń dùn...) and food preferences (Mo nìfẹ́ dodo!).' },
+      { label: 'Interactive Market Games:', text: 'Practice bargaining, asking prices (Èló ni?), and role-playing in real-life settings.' },
+      { label: 'Daily Routines & Directions:', text: 'Describe daily habits and guide others (Lọ síwájú, Yà sí ọwọ́ òsì) with confidence.' },
     ],
     accentColor: 'amber',
     bgClass: 'bg-amber-50/30 border-amber-200/40',
-    textClass: 'text-amber-700',
-    badgeClass: 'bg-amber-100/50 text-amber-800'
+    badgeClass: 'bg-amber-100/50 text-amber-800',
   },
   {
-    id: 'gbajumo',
-    title: 'Gbajúmọ̀ (Popular Youth)',
-    age: 'Ages 13 to 25',
-    tagline: 'Advanced dialogue, proverbs, and identity integration.',
-    description: 'Designed for teens and young adults to build conversational fluency, writing proficiency, and a mature understanding of Yorùbá history, proverbs (Òwe), and global contemporary culture.',
-    curriculum: [
-      'Advanced Conversational Debates & Slangs',
-      'Use of Metaphors & Proverbs (Òwe)',
-      'Yorùbá History, Geography & Kingship (Adé)',
-      'Reading and Writing Accent Marks (Àmì)'
+    id: 'level-3',
+    title: 'Level 3',
+    subtitle: 'Deep Heritage & Cultural Mastery',
+    tagline: 'Unlocking proverbs, folklore, and unshakable cultural identity.',
+    description: 'At this pinnacle stage, learners command Yorùbá proverbs, explore rich cultural traditions, and achieve complete conversational fluency with deep cultural pride.',
+    items: [
+      { label: 'Speak with Wisdom:', text: 'Unlock Yorùbá proverbs (Òwe), rich folklore (Àlọ́ àti Ìtán), and storytelling art.' },
+      { label: 'Explore Cultural Roots:', text: 'Discover traditional marriage customs (Àṣà Ìgbéyàwó), historical heritage, and ceremonial attire (Aṣọ Wíwọ̀).' },
+      { label: 'Unshakable Identity:', text: 'Achieve complete conversational fluency, cultural pride, and a lifelong connection to home.' },
     ],
     accentColor: 'gray',
     bgClass: 'bg-gray-50/50 border-gray-200/40',
-    textClass: 'text-gray-800',
-    badgeClass: 'bg-gray-200/60 text-gray-800'
-  }
+    badgeClass: 'bg-gray-200/60 text-gray-800',
+  },
 ];
 
 const features = [
@@ -121,7 +117,8 @@ const itemVariants = {
 
 export default function YorubaAcademy() {
   const [activeTab, setActiveTab] = useState('irawo');
-  const activeTrack = tracks.find((t) => t.id === activeTab) || tracks[0];
+  const [activeLevelTab, setActiveLevelTab] = useState('level-1');
+  const activeLevel = curriculumLevels.find((l) => l.id === activeLevelTab) || curriculumLevels[0];
 
   return (
     <section className="py-16 md:py-[100px] bg-gray-50 overflow-hidden border-t border-gray-100" id="yoruba-academy">
@@ -139,94 +136,118 @@ export default function YorubaAcademy() {
           </p>
         </div>
 
-        {/* Part 1: Interactive Age Bracket Tracks */}
-        {/* <div className="mb-20"> */}
-        {/* <h3 className="font-heading text-lg sm:text-xl text-gray-950 font-bold mb-6">
-            Customised Tracks for Learners Aged 3 to 25
-          </h3> */}
+        {/* Explore Curriculum Section */}
+        <div id="yoruba-curriculum" className="mb-20 scroll-mt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-4xl"
+          >
+            <h3 className="font-heading-two text-[24px] sm:text-[30px] md:text-[36px] text-gray-950 leading-[1.15] mb-5 font-bold">
+              Our Interactive <span className="text-green-600">Yorùbá Learning</span> Pathways
+            </h3>
+            <p className="text-sm sm:text-base text-gray-500 leading-relaxed max-w-3xl mb-10">
+              Watch your child&apos;s confidence bloom through live gamified challenges, cultural storytelling, peer role-plays, and interactive quizzes designed to make learning Yorùbá second nature. Here is a glimpse of how their journey unfolds:
+            </p>
+          </motion.div>
 
-        {/* Tabs Navigation */}
-        {/* <div className="flex gap-2.5 p-1.5 bg-gray-200/50 rounded-2xl max-w-xl mb-8 overflow-x-auto scrollbar-none">
-            {tracks.map((t) => (
+          {/* Tabs Navigation */}
+          <div className="flex gap-2.5 p-1.5 bg-gray-200/50 rounded-2xl max-w-xl mb-8 overflow-x-auto scrollbar-none">
+            {curriculumLevels.map((l) => (
               <button
-                key={t.id}
-                onClick={() => setActiveTab(t.id)}
-                className={`flex-1 min-w-[120px] py-3.5 px-4 font-heading text-xs font-semibold rounded-xl border-none cursor-pointer transition-all duration-300 ${activeTab === t.id
+                key={l.id}
+                onClick={() => setActiveLevelTab(l.id)}
+                className={`flex-1 min-w-[120px] py-3.5 px-4 font-heading text-sm font-semibold rounded-xl border-none cursor-pointer transition-all duration-300 ${activeLevelTab === l.id
                   ? 'bg-white text-gray-900 shadow-md shadow-black/5 scale-[1.02]'
                   : 'text-gray-500 hover:text-gray-900'
                   }`}
               >
-                {t.title}
+                {l.title}
               </button>
             ))}
-          </div> */}
+          </div>
 
-        {/* Active Tab Content Panel */}
-        {/* <AnimatePresence mode="wait">
+          {/* Active Level Content Panel */}
+          <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab}
+              key={activeLevelTab}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.35, ease: 'easeInOut' }}
-              className={`p-6 sm:p-8 rounded-[24px] border ${activeTrack.bgClass} grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 items-start backdrop-blur-xs`}
+              className={`p-6 sm:p-8 rounded-[24px] border ${activeLevel.bgClass} grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-8 items-start backdrop-blur-xs`}
             >
               <div className="flex flex-col items-start gap-4">
-                <span className={`inline-block font-heading text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-md ${activeTrack.badgeClass}`}>
-                  {activeTrack.age}
-                </span>
+
                 <h4 className="font-heading text-xl sm:text-2xl font-bold text-gray-950 leading-tight">
-                  {activeTrack.tagline}
+                  {activeLevel.subtitle}
                 </h4>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-[620px]">
-                  {activeTrack.description}
+                <p className="text-[15px] text-gray-600 leading-relaxed max-w-[620px]">
+                  {activeLevel.description}
                 </p>
 
                 <div className="pt-4 w-full">
-                  <h5 className="font-heading text-xs font-bold text-gray-900 uppercase tracking-widest mb-3.5">
-                    What we cover in this track:
+                  <h5 className="font-heading text-[14px] font-bold text-gray-900 uppercase tracking-widest mb-3.5">
+                    What your child will learn:
                   </h5>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
-                    {activeTrack.curriculum.map((item, idx) => (
+                  <div className="flex flex-col gap-3 w-full">
+                    {activeLevel.items.map((item, idx) => (
                       <div key={idx} className="flex gap-2 items-start">
-                        <div className={`p-1 rounded-full ${activeTrack.badgeClass} shrink-0 mt-0.5`}>
+                        <div className={`p-1 rounded-full ${activeLevel.badgeClass} shrink-0 mt-0.5`}>
                           <HugeiconsIcon icon={CheckmarkCircle02Icon} size={14} />
                         </div>
-                        <span className="text-[13px] sm:text-sm text-gray-700">{item}</span>
+                        <div>
+                          <span className="text-sm sm:text-sm font-semibold text-gray-800">{item.label}</span>
+                          <span className="text-sm sm:text-sm text-gray-500 ml-1">{item.text}</span>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
-              </div> */}
+              </div>
 
-        {/* Decorative custom mockup inside the tab panel */}
-        {/* <div className="hidden lg:flex flex-col gap-3.5 p-6 rounded-2xl bg-white border border-gray-100 shadow-sm w-full cursor-default">
-                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Class Preview</span>
+              {/* Decorative sidebar */}
+              <div className="hidden lg:flex flex-col gap-3.5 p-6 rounded-2xl bg-white border border-gray-100 w-full cursor-default">
+                <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400">Pathway Preview</span>
                 <div className="flex gap-3 items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${activeTrack.badgeClass}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${activeLevel.badgeClass}`}>
                     YA
                   </div>
                   <div>
-                    <div className="font-heading text-[13px] font-semibold text-gray-900">Yorùbá Academy Cohort</div>
-                    <div className="text-[10px] text-gray-400">Taught by Morayo A. (Expert Native Speaker)</div>
+                    <div className="font-heading text-[13px] font-semibold text-gray-900">{activeLevel.subtitle}</div>
+                    <div className="text-[10px] text-gray-400">Guided by Native-Speaking Tutors</div>
                   </div>
                 </div>
                 <div className="h-1 bg-gray-100 rounded-full overflow-hidden my-1">
-                  <div className={`h-full rounded-full ${activeTrack.accentColor === 'green' ? 'bg-green-600' : activeTrack.accentColor === 'amber' ? 'bg-amber-500' : 'bg-gray-800'
-                    }`} style={{ width: '40%' }} />
+                  <div className={`h-full rounded-full ${activeLevel.accentColor === 'green' ? 'bg-green-600' : activeLevel.accentColor === 'amber' ? 'bg-amber-500' : 'bg-gray-800'
+                    }`} style={{ width: activeLevel.id === 'level-1' ? '33%' : activeLevel.id === 'level-2' ? '66%' : '100%' }} />
                 </div>
                 <div className="text-[11px] text-gray-500 leading-relaxed italic bg-gray-50 p-3 rounded-lg border border-gray-100">
-                  &ldquo;Ìkíni: We start with proper greetings to adults. In Yoruba culture, respect is woven directly into how we say hello.&rdquo;
+                  &ldquo;{activeLevel.tagline}&rdquo;
                 </div>
-              </div> */}
-        {/* </motion.div>
+              </div>
+            </motion.div>
           </AnimatePresence>
-        </div> */}
-        {/* </div> */}
+
+          {/* And Lots More */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex items-center gap-4 mt-10 justify-center"
+          >
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-gray-200" />
+            <span className="font-heading text-base sm:text-lg text-gray-400 font-semibold tracking-wide">And Lots More!</span>
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-gray-200" />
+          </motion.div>
+        </div>
 
         {/* Part 2: Program Features Grid */}
         <div className="mb-20">
-          <h3 className="font-heading text-lg sm:text-xl text-gray-950 font-bold mb-8">
+          <h3 className="font-heading text-xl sm:text-2xl text-gray-950 font-bold mb-8">
             Program Key Pillars
           </h3>
 
