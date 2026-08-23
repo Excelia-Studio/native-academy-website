@@ -184,14 +184,9 @@ export default function YorubaAcademy() {
                 <h4 className="font-heading text-xl sm:text-2xl font-bold text-gray-950 leading-tight">
                   {activeLevel.subtitle}
                 </h4>
-                {/* <p className="text-[15px] text-gray-600 leading-relaxed max-w-[620px]">
-                  {activeLevel.description}
-                </p> */}
+
 
                 <div className="pt-4 w-full">
-                  {/* <h5 className="font-heading text-[14px] font-bold text-gray-900 uppercase tracking-widest mb-3.5">
-                    What your child will learn:
-                  </h5> */}
                   <div className="flex flex-col gap-3 w-full">
                     {activeLevel.items.map((item, idx) => (
                       <div key={idx} className="flex gap-2 items-start">
