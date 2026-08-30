@@ -15,7 +15,7 @@ const GREETINGS: Greeting[] = [
   {
     language: 'Yorùbá',
     text: 'Ẹ káàbọ̀',
-    audioSrc: '',
+    audioSrc: '/audio/yoruba-welcome.mp3',
     flag: '🇳🇬',
   },
   {
@@ -78,8 +78,8 @@ export default function WelcomeVoice() {
       const greeting = GREETINGS[index];
 
       const langCode = greeting.language === 'Yorùbá' ? 'yo' :
-                       greeting.language === 'Igbo' ? 'ig' :
-                       greeting.language === 'Hausa' ? 'ha' : 'en';
+        greeting.language === 'Igbo' ? 'ig' :
+          greeting.language === 'Hausa' ? 'ha' : 'en';
 
       const trySpeechSynthesis = () => {
         if (typeof window !== 'undefined' && window.speechSynthesis) {

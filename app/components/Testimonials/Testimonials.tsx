@@ -16,7 +16,7 @@ const testimonials = [
   {
     quote: "My teenage daughter actually looks forward to her weekend classes. The interaction with other diaspora kids makes it feel less like regular school and more like a cultural club. Highly recommend!",
     name: 'Tunde',
-    location: 'United States',
+    location: 'United Kingdom',
     tag: 'Engaging and deeply interactive',
   },
 ];

@@ -252,31 +252,11 @@ export default function ContactForm() {
                       </span>
                     </div>
 
-                    {/* Stylized Barcode SVG */}
-                    {/* <div className="bg-white/95 rounded-lg p-2 flex flex-col items-center gap-1 shrink-0 group-hover:bg-white transition-colors">
-                      <svg width="72" height="26" viewBox="0 0 72 26" fill="black">
-                        Barcode lines
-                        <rect x="2" y="2" width="2" height="22" />
-                        <rect x="6" y="2" width="1" height="22" />
-                        <rect x="8" y="2" width="3" height="22" />
-                        <rect x="13" y="2" width="1" height="22" />
-                        <rect x="16" y="2" width="2" height="22" />
-                        <rect x="20" y="2" width="4" height="22" />
-                        <rect x="26" y="2" width="1" height="22" />
-                        <rect x="29" y="2" width="2" height="22" />
-                        <rect x="33" y="2" width="1" height="22" />
-                        <rect x="36" y="2" width="3" height="22" />
-                        <rect x="41" y="2" width="2" height="22" />
-                        <rect x="45" y="2" width="1" height="22" />
-                        <rect x="48" y="2" width="4" height="22" />
-                        <rect x="54" y="2" width="1" height="22" />
-                        <rect x="57" y="2" width="2" height="22" />
-                        <rect x="61" y="2" width="3" height="22" />
-                        <rect x="66" y="2" width="1" height="22" />
-                        <rect x="68" y="2" width="2" height="22" />
-                      </svg>
-                      <span className="text-[7px] text-gray-800 font-mono tracking-widest leading-none font-bold uppercase">JOIN COHORT</span>
-                    </div> */}
+                    {/* Join Cohort Button */}
+                    <div className="bg-green-600/20 hover:bg-green-500/30 border border-green-400/30 hover:border-green-400/50 rounded-xl px-4 py-2.5 flex items-center gap-2 shrink-0 transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(34,197,94,0.15)]">
+                      <span className="text-[11px] font-heading text-green-400 font-bold uppercase tracking-wider whitespace-nowrap">Join Cohort</span>
+                      <HugeiconsIcon icon={ArrowRight01Icon} size={14} className="text-green-400 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
                   </div>
 
                 </div>
