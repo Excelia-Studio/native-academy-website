@@ -102,13 +102,13 @@ export default function Hero() {
             className="flex items-center justify-start gap-16 pt-6 border-t border-gray-100 w-full flex-wrap sm:flex-nowrap"
           >
             <motion.div whileHover={{ y: -2 }} className="flex flex-col gap-0.5 transition-transform">
-              <span className="font-heading text-[22px] text-gray-900">100+</span>
-              <span className="text-[13px] text-gray-400">Students Enrolled</span>
+              <span className="font-heading text-[22px] text-gray-900">6:1</span>
+              <span className="text-[13px] text-gray-400">Max Class Size</span>
             </motion.div>
 
             <motion.div whileHover={{ y: -2 }} className="flex flex-col gap-0.5 transition-transform">
-              <span className="font-heading text-[22px] text-gray-900">12+</span>
-              <span className="text-[13px] text-gray-400">Countries</span>
+              <span className="font-heading text-[22px] text-gray-900">100%</span>
+              <span className="text-[13px] text-gray-400">Online & UK Timezone</span>
             </motion.div>
 
             <motion.div whileHover={{ y: -2 }} className="flex flex-col gap-0.5 transition-transform">
