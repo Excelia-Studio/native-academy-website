@@ -14,8 +14,8 @@ import {
 } from '@hugeicons/core-free-icons';
 
 const perks = [
-  'Live 1-on-1 & Small Group Tutors',
-  'Flexible Weekend & Evening Classes',
+  'Small Group Live Lessons',
+  'Weekly Weekend & Evening Classes',
 ];
 
 export default function FooterCTA() {
@@ -65,7 +65,7 @@ export default function FooterCTA() {
                 transition={{ delay: 0.15 }}
                 className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl"
               >
-                Give your children the confidence to speak their native language fluently with engaging, 1-on-1 live lessons designed specifically for diaspora kids.
+                Give your children the confidence to speak their native language fluently with engaging, small group live lessons designed specifically for diaspora kids.
               </motion.p>
             </div>
 
