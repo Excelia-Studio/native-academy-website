@@ -19,7 +19,7 @@ export default function ContactForm() {
     setInviteRef(`YA-${randomNum}`);
   }, []);
 
-  const googleFormUrl = "https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true";
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform";
 
   return (
     <section className="py-12 md:py-20 bg-white overflow-hidden" id="contact-form-section">

@@ -114,7 +114,7 @@ export default function Navbar() {
               size="default"
               className="shrink-0 rounded-full bg-green-600 hover:bg-green-700 text-white font-medium shadow-none px-6 py-2.5 h-auto text-sm transition-all"
             >
-              <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="nav-cta" target='_blank' rel='noopener noreferrer'>Enroll Now</a>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform" id="nav-cta" target='_blank' rel='noopener noreferrer'>Enroll Now</a>
             </Button>
           </motion.div>
 
@@ -180,7 +180,7 @@ export default function Navbar() {
                   size="lg"
                   className="rounded-full bg-green-600 hover:bg-green-700 text-white font-semibold w-full py-3.5 h-auto"
                 >
-                  <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="nav-cta" target='_blank' rel='noopener noreferrer'>Enroll Now</a>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform" id="nav-cta" target='_blank' rel='noopener noreferrer'>Enroll Now</a>
                 </Button>
               </motion.div>
             </div>

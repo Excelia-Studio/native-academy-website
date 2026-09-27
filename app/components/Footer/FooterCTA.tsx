@@ -108,7 +108,7 @@ export default function FooterCTA() {
                     size="lg"
                     className="w-full py-4 h-auto bg-amber-500 hover:bg-amber-600 text-gray-950 font-medium rounded-full relative overflow-hidden group border-0"
                   >
-                    <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" target='_blank' rel='noopener noreferrer' id="footer-cta-primary" className="flex items-center justify-center gap-2">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform" target='_blank' rel='noopener noreferrer' id="footer-cta-primary" className="flex items-center justify-center gap-2">
                       <span>Save your child&apos;s spot</span>
                       <HugeiconsIcon
                         icon={ArrowRight01Icon}
@@ -208,7 +208,7 @@ export default function FooterCTA() {
                   className="bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold px-6 py-2.5 rounded-full text-sm shrink-0 border-0"
                 >
                   <a
-                    href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsVideoModalOpen(false)}

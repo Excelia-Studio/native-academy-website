@@ -81,7 +81,7 @@ export default function Hero() {
           >
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
               <Button asChild size="lg" className="w-full sm:w-auto px-7 bg-green-600 hover:bg-green-700 text-white font-medium shadow-none rounded-full h-auto py-3.5 transition-all">
-                <a href="https://docs.google.com/forms/d/1ejqCIsjfUUijEPy1lPxpxlF18NJtwbXSZybKH-6OSD0/viewform?edit_requested=true" id="hero-cta-primary" target="_blank" rel="noopener noreferrer">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSffOXwBR9n60j3zR7o4I_gocJ4AJvT6WFAXVt9n8kBCa97HHA/viewform" id="hero-cta-primary" target="_blank" rel="noopener noreferrer">
                   Save your child&apos;s spot
                   <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
                 </a>
